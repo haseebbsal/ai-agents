@@ -15,7 +15,7 @@ export default function NavProvider({ children }: { children: ReactNode }) {
                     <HomeNavbar />
                     <div className="flex flex-1">
                         {showSideBar && <div className={`bg-backgroundColors-1 flex-[0.3_1_0] p-4 flex-col gap-4 flex`}>
-                            <BaseInput type="search" placeholder="Search 100 agents..." variant="bordered" />
+                            <BaseInput type="search" placeholder="Search 100 agents..." variant="bordered" />$
                             <BaseAutoComplete placeholder="Filter by tag..." />
                             <div className="flex flex-col gap-4">
                                 <p className="font-semibold">Recently Viewed</p>
