@@ -1,11 +1,11 @@
 'use client'
 import BaseAgent from "@/components/common/base-agent";
+import { navContext } from "@/providers/nav-provider";
 import { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import { SlOptionsVertical } from "react-icons/sl";
-import { navContext } from "./layout";
 export default function Home() {
   const {showSideBar,setShowSideBar}=useContext(navContext)
   return (
