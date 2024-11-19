@@ -7,8 +7,8 @@ export default function HomeNavbar(){
         <nav className="flex justify-between p-4 border-b-2 border-main-2 bg-backgroundColors-1">
             <Image src={'/common/logo.svg'} alt="home logo" width={200} height={200}/>
             <div className="flex gap-4">
-                <BaseButton className="min-w-28">Sign In</BaseButton>
-                <BaseButton className="min-w-28">Sign Up</BaseButton>
+                <BaseButton extraClass="min-w-28">Sign In</BaseButton>
+                <BaseButton extraClass="min-w-28">Sign Up</BaseButton>
             </div>
         </nav>
         </>
