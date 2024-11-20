@@ -1,5 +1,6 @@
 'use client'
 
+import Footer from "@/components/common/footer"
 import HomeNavbar from "@/components/common/home-navbar"
 import BaseAutoComplete from "@/components/form/base-autocomplete"
 import BaseInput from "@/components/form/base-input"
@@ -23,14 +24,13 @@ export default function NavProvider({ children }: { children: ReactNode }) {
                                 <p className=" p-4 text-text-1 rounded-xl">Distribution</p>
                                 <p className=" p-4 text-text-1 rounded-xl">Distribution</p>
                                 <p className=" p-4 text-text-1 rounded-xl">Distribution</p>
-
                             </div>
                         </div>}
 
                         {children}
                     </div>
+                    <Footer/>
                 </div>
-
             </navContext.Provider>
 
         </>

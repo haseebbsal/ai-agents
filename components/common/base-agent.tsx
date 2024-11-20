@@ -3,9 +3,15 @@ import { VscAccount } from "react-icons/vsc";
 import BaseButton from "./base-button";
 import Image from "next/image";
 import { BaseAgentProps } from "@/utils/types";
+import { useRouter } from "next/navigation";
 
 
 export default function BaseAgent({ agentText, info, imgSrc }: BaseAgentProps) {
+    const router=useRouter()
+    const navigate=()=>{
+        router.push('/agent')
+    }
+
     return (
         <>
             <div className="p-4 flex flex-col gap-[1.5rem] flex-[1_0_25%]  min-h-44 border-2 rounded-lg border-main-2">
@@ -21,7 +27,7 @@ export default function BaseAgent({ agentText, info, imgSrc }: BaseAgentProps) {
                     </div> */}
                 </div>
                 <p className="text-text-1">{info}</p>
-                <BaseButton style={{ marginTop: "auto" }}>Hire</BaseButton>
+                <BaseButton onClick={navigate} style={{ marginTop: "auto" }}>Hire</BaseButton>
             </div>
         </>
     )
