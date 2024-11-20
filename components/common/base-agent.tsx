@@ -2,12 +2,9 @@ import { SlOptions } from "react-icons/sl";
 import { VscAccount } from "react-icons/vsc";
 import BaseButton from "./base-button";
 import Image from "next/image";
+import { BaseAgentProps } from "@/utils/types";
 
-interface BaseAgentProps {
-    agentText: string,
-    info: string,
-    imgSrc: string
-}
+
 export default function BaseAgent({ agentText, info, imgSrc }: BaseAgentProps) {
     return (
         <>
@@ -24,7 +21,7 @@ export default function BaseAgent({ agentText, info, imgSrc }: BaseAgentProps) {
                     </div> */}
                 </div>
                 <p className="text-text-1">{info}</p>
-                <BaseButton style={{marginTop:"auto"}}>Hire</BaseButton>
+                <BaseButton style={{ marginTop: "auto" }}>Hire</BaseButton>
             </div>
         </>
     )

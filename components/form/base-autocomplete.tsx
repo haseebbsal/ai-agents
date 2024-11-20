@@ -1,16 +1,10 @@
 'use client'
+import { BaseAutoCompleteProps } from "@/utils/types";
 import { Autocomplete, AutocompleteItem, AutocompleteProps } from "@nextui-org/react";
-
 
 export const animals = [
     { label: "", value: "", description: "" }
 ];
-
-
-
-interface BaseAutoCompleteProps extends Omit<AutocompleteProps,'children'>{
-
-}
 
 export default function BaseAutoComplete({ placeholder }: BaseAutoCompleteProps) {
     return (
