@@ -14,8 +14,8 @@ export default function NavProvider({ children }: { children: ReactNode }) {
             <navContext.Provider value={{ showSideBar, setShowSideBar }}>
                 <div className="min-h-screen flex-col flex">
                     <HomeNavbar />
-                    <div className="flex flex-1">
-                        {showSideBar && <div className={`bg-backgroundColors-1 flex-[0.3_1_0] p-4 flex-col gap-4 flex`}>
+                    <div className="flex flex-1 gap-4">
+                        {showSideBar && <div className={`bg-backgroundColors-1 flex-[0.3_1_0] p-4 flex-col gap-4 flex border-r-1 border-main-2`}>
                             <BaseInput type="search" placeholder="Search 100 agents..." variant="bordered" />
                             <BaseAutoComplete placeholder="Filter by tag..." />
                             <div className="flex flex-col gap-4">
