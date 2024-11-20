@@ -10,7 +10,6 @@ export interface BaseButtonProps extends ButtonProps {
     extraClass?: string
 }
 
-
 export interface BaseAutoCompleteProps extends Omit<AutocompleteProps, 'children'> {
 }
 
