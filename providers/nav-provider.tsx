@@ -9,9 +9,10 @@ import { createContext, ReactNode, useState } from "react"
 export const navContext = createContext<any>({})
 export default function NavProvider({ children }: { children: ReactNode }) {
     const [showSideBar, setShowSideBar] = useState<boolean>(true)
+    const [agent,setAgent]=useState<any>()
     return (
         <>
-            <navContext.Provider value={{ showSideBar, setShowSideBar }}>
+            <navContext.Provider value={{ showSideBar, setShowSideBar,agent,setAgent }}>
                 <div className="min-h-screen flex-col flex">
                     <HomeNavbar />
                     <div className="flex flex-1 gap-4">

@@ -1,9 +1,13 @@
-import { AutocompleteProps, ButtonProps, InputProps } from "@nextui-org/react"
+import { AutocompleteProps, ButtonProps, InputProps, TextAreaProps } from "@nextui-org/react"
+import { DetailedHTMLProps, Dispatch, LabelHTMLAttributes } from "react"
+import { Control, FieldValues, RegisterOptions } from "react-hook-form"
 
 export interface BaseAgentProps {
     agentText: string,
     info: string,
-    imgSrc: string
+    imgSrc: string,
+    agentId:string,
+    setAgent:Dispatch<any>
 }
 
 export interface BaseButtonProps extends ButtonProps {
@@ -14,4 +18,27 @@ export interface BaseAutoCompleteProps extends Omit<AutocompleteProps, 'children
 }
 
 export interface BaseInputProps extends InputProps {
+}
+
+
+
+export interface BaseFileProps{
+    showHeader?:boolean,
+    extraClass?:string,
+    headerText?:string
+    name:string,
+    control:Control<FieldValues>;
+    rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined
+}
+
+
+export interface BaseLabelProps extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
+    text:string,
+}
+
+
+export interface BaseTextAreaProps extends TextAreaProps{
+    control:Control<FieldValues>;
+    name:string,
+    rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined
 }
