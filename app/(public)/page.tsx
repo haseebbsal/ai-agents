@@ -13,8 +13,8 @@ export default function Home() {
       <div className=" flex-1 flex flex-col gap-4 p-4">
         <div className="flex justify-between items-center">
           <div className="flex gap-4 items-center font-semibold">
-            <GiHamburgerMenu className="cursor-pointer" onClick={() => setShowSideBar(!showSideBar)} />
-            <p>Distribution</p>
+            {/* <GiHamburgerMenu className="cursor-pointer" onClick={() => setShowSideBar(!showSideBar)} /> */}
+            <p>Agents</p>
           </div>
           <div className="flex gap-1 items-center">
             <GoChevronLeft />

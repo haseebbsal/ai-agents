@@ -15,10 +15,10 @@ export default function BaseAgent({ agentText, info, imgSrc ,setAgent,agentId}: 
 
     return (
         <>
-            <div className="p-4 flex flex-col gap-[1.5rem] flex-[1_0_25%]  min-h-44 border-2 rounded-lg border-main-2">
+            <div className="p-4 flex flex-col gap-[1.5rem] flex-[1_0_20%]  min-h-44 border-2 rounded-lg border-main-2">
                 <div className="flex justify-between items-center">
                     <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
-                    <SlOptions />
+                    {/* <SlOptions /> */}
                 </div>
                 <div className="flex flex-col gap-2 border-b-2 border-main-2 pb-4">
                     <p className="text-text-2 text-xl font-semibold">{agentText}</p>

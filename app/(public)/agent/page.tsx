@@ -165,7 +165,7 @@ export default function Home() {
                 {
                     agent == '9' && <div className="flex flex-col gap-4">
                         <BaseTextArea minRows={1} control={control} name="company_name" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
-                        <BaseTextArea minRows={1} control={control} name="company_variations" rules={{}} label="Company Variations" labelPlacement="outside" placeholder="Enter Comma Seperated Company Variations e.g.( Life Insurance Corporation of India, Jubilee Life Insurance Company Limited)" />
+                        <BaseTextArea minRows={1} control={control} name="company_variations" rules={{}} label="Company Variations (optional)" labelPlacement="outside" placeholder="Enter Comma Seperated Company Variations e.g.( Life Insurance Corporation of India, Jubilee Life Insurance Company Limited)" />
                     </div>
                 }
                 {

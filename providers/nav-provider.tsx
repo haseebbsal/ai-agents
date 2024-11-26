@@ -16,7 +16,7 @@ export default function NavProvider({ children }: { children: ReactNode }) {
                 <div className="min-h-screen flex-col flex">
                     <HomeNavbar />
                     <div className="flex flex-1 gap-4">
-                        {showSideBar && <div className={`bg-backgroundColors-1 flex-[0.3_1_0] p-4 flex-col gap-4 flex border-r-1 border-main-2`}>
+                        {/* {showSideBar && <div className={`bg-backgroundColors-1 flex-[0.3_1_0] p-4 flex-col gap-4 flex border-r-1 border-main-2`}>
                             <BaseInput type="search" placeholder="Search 100 agents..." variant="bordered" />
                             <BaseAutoComplete placeholder="Filter by tag..." />
                             <div className="flex flex-col gap-4">
@@ -26,7 +26,7 @@ export default function NavProvider({ children }: { children: ReactNode }) {
                                 <p className=" p-4 text-text-1 rounded-xl">Distribution</p>
                                 <p className=" p-4 text-text-1 rounded-xl">Distribution</p>
                             </div>
-                        </div>}
+                        </div>} */}
 
                         {children}
                     </div>
