@@ -1,10 +1,10 @@
-import { AutocompleteProps, ButtonProps, InputProps, TextAreaProps } from "@nextui-org/react"
+import { AutocompleteProps, ButtonProps, InputProps, RadioGroupProps, SelectProps, TextAreaProps } from "@nextui-org/react"
 import { DetailedHTMLProps, Dispatch, LabelHTMLAttributes } from "react"
 import { Control, FieldValues, RegisterOptions } from "react-hook-form"
 
 export interface BaseAgentProps {
     agentText: string,
-    info: string,
+    info?: string,
     imgSrc: string,
     agentId:string,
     setAgent:Dispatch<any>
@@ -20,6 +20,27 @@ export interface BaseAutoCompleteProps extends Omit<AutocompleteProps, 'children
 export interface BaseInputProps extends InputProps {
 }
 
+export interface BaseAgentInputProps extends InputProps {
+    control:Control<FieldValues>;
+    rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined;
+    name:string
+}
+
+
+export interface BaseRadioGroupProps extends RadioGroupProps{
+    control:Control<FieldValues>;
+    rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined;
+    name:string;
+    data:string[]
+}
+
+
+export interface BaseSelectProps extends Omit<SelectProps,'children'>{
+    control:Control<FieldValues>;
+    rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined;
+    name:string;
+    data:string[]
+}
 
 
 export interface BaseFileProps{

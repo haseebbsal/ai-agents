@@ -4,13 +4,17 @@ import BaseFile from "@/components/form/base-file";
 import BaseTextArea from "@/components/form/base-textarea";
 import { navContext } from "@/providers/nav-provider";
 import { axiosInstance } from "@/utils/instance";
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea } from "@nextui-org/react";
+import { Radio, RadioGroup, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea } from "@nextui-org/react";
 import Image from "next/image";
 import { redirect, useRouter } from "next/navigation";
 import { useContext, useRef, useState } from "react";
 import { FieldValues, useController, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import Markdown from 'react-markdown'
+import BaseInput from "@/components/form/base-input";
+import BaseAgentInput from "@/components/form/base-input-agent";
+import BaseRadioGroup from "@/components/form/base-radio";
+import BaseSelect from "@/components/form/base-select";
 
 const agents = [
     {
@@ -40,6 +44,13 @@ const agents = [
     ,
     {
         imgSrc: "/agents/policy.svg", agentText: "Policy Word Explainer Agent", info: "Explains cover and exclusions in a simple to understand manner."
+    },
+    {
+        imgSrc: "/agents/sentiment.svg", agentText: "Customer Sentiment", info: "Scrapes the web to find customer sentiments about the company and presents the findings at aggregate level."
+    },
+    {
+        imgSrc: "/agents/chat.svg",
+        agentText: "Personalized Recommendation"
     }
 ]
 
@@ -85,9 +96,38 @@ export default function Home() {
             if (!f[1]) {
                 delete e[f[0]]
             }
+            else if (f[0] == 'company_variations') {
+                e[f[0]] = f[1].split(',')
+            }
         })
 
-        // console.log('values',e)
+        if(Object.keys(e).includes('characteristics')){
+            const customer_segment=e['customer_segment']
+            if(customer_segment=='Business'){
+                Object.entries(e['characteristics']).forEach((m)=>{
+                    if(m[0]!='industry' && m[0]!='risk_concern'){
+                        delete e['characteristics'][m[0]]
+                    }
+                })
+            }
+            if(customer_segment=='Specialized'){
+                Object.entries(e['characteristics']).forEach((m)=>{
+                    if(m[0]!='type_of_entity' && m[0]!='specific_needs'){
+                        delete e['characteristics'][m[0]]
+                    }
+                })
+            }
+            if(customer_segment=='Individual'){
+                Object.entries(e['characteristics']).forEach((m)=>{
+                    if(m[0]!='type' && m[0]!='interest'){
+                        delete e['characteristics'][m[0]]
+                    }
+                })
+            }
+        }
+
+
+        // console.log('values', e)
         agentMutation.mutate(e)
     }
 
@@ -119,6 +159,31 @@ export default function Home() {
                         <BaseFile headerText="Upload Policy Document" showHeader={true} control={control} name="file" rules={{ required: "Select File" }} />
                         <p className="text-text-2 font-semibold">OR</p>
                         <BaseTextArea rules={{ validate: () => getValues().file ? true : "File is already selected" }} control={control} name="question" label="Ask a Question Directly" labelPlacement="outside" placeholder="Type your question or paste text for explanation (e.g., What does 'rider' mean in my policy?)" minRows={1} />
+                    </div>
+                }
+                {
+                    agent == '9' && <div className="flex flex-col gap-4">
+                        <BaseTextArea minRows={1} control={control} name="company_name" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
+                        <BaseTextArea minRows={1} control={control} name="company_variations" rules={{}} label="Company Variations" labelPlacement="outside" placeholder="Enter Comma Seperated Company Variations e.g.( Life Insurance Corporation of India, Jubilee Life Insurance Company Limited)" />
+                    </div>
+                }
+                {
+                    agent == '10' && <div className="flex flex-col gap-4">
+                        <BaseAgentInput name="customer_name" label='Name' labelPlacement="outside" control={control} rules={{ required: "Enter Your Name" }} placeholder="Enter Your Name" />
+                        <BaseSelect labelPlacement="outside" placeholder="Select Age Group" control={control} name="age_group" label="Select Age Group" rules={{ required: "Select Age Group" }} data={['20-30', '30-40', '40-50', '50-60', '60-70', '70-80']} />
+                        <BaseSelect labelPlacement="outside" placeholder="Select Entity" control={control} name="customer_segment" label="Select Entity" rules={{ required: "Select Entity" }} data={['Individual', 'Business', 'Specialized']} />
+                        {getValues().customer_segment == 'Individual' && <>
+                            <BaseAgentInput name="characteristics.type" label='Type Of Customer' labelPlacement="outside" control={control} rules={{ required: "Enter Type Of Customer" }} placeholder="Are you a Homeowner, Renter, Vehicle Owner, or Other?" />
+                            <BaseAgentInput name="characteristics.interest" label='Type Of Insurance' labelPlacement="outside" control={control} rules={{ required: "Enter Type Of Insurance" }} placeholder="What type of insurance are you looking for (e.g., Property, Life, Health)?" />
+                        </>}
+                        {getValues().customer_segment == 'Business' && <>
+                            <BaseAgentInput name="characteristics.industry" label='Industry' labelPlacement="outside" control={control} rules={{ required: "Enter Industry" }} placeholder="What industry is your business in (e.g., Technology, Manufacturing)?" />
+                            <BaseAgentInput name="characteristics.risk_concern" label='Primary Risk' labelPlacement="outside" control={control} rules={{ required: "Enter Primary Risk" }} placeholder="What is the primary risk your business wants to mitigate (e.g., cyber threats, liability)?" />
+                        </>}
+                        {getValues().customer_segment == 'Specialized' && <>
+                            <BaseAgentInput name="characteristics.type_of_entity" label='Type Of Specialized Entity' labelPlacement="outside" control={control} rules={{ required: "Enter Type Of Specialized Entity" }} placeholder="What type of specialized entity are you? (e.g., Airlines, Non-Profit Organization, Educational Institution)?" />
+                            <BaseAgentInput name="characteristics.specific_needs" label='Primary Insurance Need' labelPlacement="outside" control={control} rules={{ required: "Enter Primary Insurance Need" }} placeholder="What is the primary insurance need for your entity (e.g., Aviation Insurance, Liability, Health)?" /> 
+                        </>}
                     </div>
                 }
                 <div className="flex justify-end gap-4">
@@ -180,7 +245,7 @@ export default function Home() {
                         </div>
                     }
                     )}
-                    {agent == '2' && data?.map((e: any, number: number) =>
+                    {(agent == '2' || agent == '9') && data?.map((e: any, number: number) =>
                     (
                         <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                             <div className="flex flex-col gap-4">
@@ -199,6 +264,27 @@ export default function Home() {
                         </div>
                     )
                     )}
+                    {
+                        agent=='10' && data?.map((e: any, number: number) =>
+                            (
+                                <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
+                                    <div className="flex flex-col gap-4">
+                                        <div className="flex gap-4">
+                                            <p className="font-semibold">Agent:</p>
+                                            <p>{number == 0 ? "Competitor Data Retrieval" : number == 1 ? "Market Positioning" : number == 3 ? "Performance Matrix Analysis" : "Competitor Comparison"}</p>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <p className="font-semibold">Task Name:</p>
+                                            <p>{e.name.replaceAll('_', ' ')}</p>
+                                        </div>
+                                        <div className="flex flex-col gap-4">
+                                            <Markdown>{e.raw}</Markdown>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                            )
+                    }
                 </div>
 
 
