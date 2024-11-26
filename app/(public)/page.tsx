@@ -33,7 +33,8 @@ export default function Home() {
           <BaseAgent agentId='0' setAgent={setAgent} imgSrc="/agents/seo.svg" agentText="SEO Search Agent" info="Searches the web for relevant keywords for SEO and advertising strategies." />
           <BaseAgent agentId='1' setAgent={setAgent} imgSrc="/agents/marketing.svg" agentText="Marketing Agent" info="Creates ideas and content for marketing campaigns in the insurance industry." />
           <BaseAgent agentId='9' setAgent={setAgent} imgSrc="/agents/sentiment.svg" agentText="Customer Sentiment" info="Scrapes the web to find customer sentiments about the company and presents the findings at aggregate level." />
-          <BaseAgent agentId='10' setAgent={setAgent} imgSrc="/agents/chat.svg" agentText="Personalized Recommendation"  />
+          <BaseAgent agentId='10' setAgent={setAgent} imgSrc="/agents/chat.svg" agentText="Personalized Recommendation" info="Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics.
+ " />
 
         </div>
       </div>

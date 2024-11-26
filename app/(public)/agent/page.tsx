@@ -50,7 +50,8 @@ const agents = [
     },
     {
         imgSrc: "/agents/chat.svg",
-        agentText: "Personalized Recommendation"
+        agentText: "Personalized Recommendation",
+        info:"Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics."
     }
 ]
 
