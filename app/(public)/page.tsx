@@ -28,12 +28,12 @@ export default function Home() {
           {/* <BaseAgent agentId='6' setAgent={setAgent} imgSrc="/agents/consumer.svg" agentText="Consumer Digital Twin" info="Compares products and marketing ideas against insurance customer personas." /> */}
           {/* <BaseAgent agentId='5' setAgent={setAgent} imgSrc="/agents/risk.svg" agentText="Emerging Risk Identification Agent" info="Provided an overview of emerging risks within a specific insurance product area." /> */}
           {/* <BaseAgent agentId='4' setAgent={setAgent} imgSrc="/agents/chat.svg" agentText="Chatbot Agent" info="Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent." /> */}
-          {/* <BaseAgent agentId='3' setAgent={setAgent} imgSrc="/agents/customer.svg" agentText="Customer Research Agent" info="Researcher a customer via public information." /> */}
+          <BaseAgent agentId='3' setAgent={setAgent} imgSrc="/agents/customer.svg" agentText="Digital Twin Agent" info="Provide product developers and marketeers at insurance companies with a way of evaluating product ideas or marketing ideas against nine different insurance customer personas." />
           <BaseAgent agentId='2' setAgent={setAgent} imgSrc="/agents/competitor.svg" agentText="Competitor Analysis Agent" info="Compares products and marketing ideas against insurance customer personas." />
           <BaseAgent agentId='0' setAgent={setAgent} imgSrc="/agents/seo.svg" agentText="SEO Search Agent" info="Searches the web for relevant keywords for SEO and advertising strategies." />
           <BaseAgent agentId='9' setAgent={setAgent} imgSrc="/agents/sentiment.svg" agentText="Customer Sentiment" info="Scrapes the web to find customer sentiments about the company and presents the findings at aggregate level." />
           <BaseAgent agentId='10' setAgent={setAgent} imgSrc="/agents/chat.svg" agentText="Personalized Recommendation" info="Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics." />
-          {/* <BaseAgent agentId='1' setAgent={setAgent} imgSrc="/agents/marketing.svg" agentText="Marketing Agent" info="Creates ideas and content for marketing campaigns in the insurance industry." /> */}
+          <BaseAgent agentId='1' setAgent={setAgent} imgSrc="/agents/marketing.svg" agentText="Marketing Agent" info="Creates ideas and content for marketing campaigns in the insurance industry." />
 
         </div>
       </div>

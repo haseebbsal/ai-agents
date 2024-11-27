@@ -21,13 +21,14 @@ const agents = [
         imgSrc: "/agents/seo.svg", agentText: "SEO Search Agent", info: "Searches the web for relevant keywords for SEO and advertising strategies."
     },
     {
-        imgSrc: "/agents/vehicle.svg", agentText: "Vehicle Data Agent", info: "Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search."
-    },
+        imgSrc: "/agents/marketing.svg", agentText: "Marketing Agent", info: "Creates ideas and content for marketing campaigns in the insurance industry."
+    }
+    ,
     {
         imgSrc: "/agents/competitor.svg", agentText: "Competitor Analysis Agent", info: "Compares products and marketing ideas against insurance customer personas."
     },
     {
-        imgSrc: "/agents/risk.svg", agentText: "Emerging Risk Identification Agent", info: "Provided an overview of emerging risks within a specific insurance product area."
+        imgSrc: "/agents/customer.svg", agentText: "Digital Twin Agent", info: "Provide product developers and marketeers at insurance companies with a way of evaluating product ideas or marketing ideas against nine different insurance customer personas."
     },
     {
         imgSrc: "/agents/chat.svg", agentText: "Chatbot Agent", info: "Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent."
@@ -39,7 +40,7 @@ const agents = [
         imgSrc: "/agents/consumer.svg", agentText: "Consumer Digital Twin", info: "Compares products and marketing ideas against insurance customer personas."
     },
     {
-        imgSrc: "/agents/marketing.svg", agentText: "Marketing Agent", info: "Creates ideas and content for marketing campaigns in the insurance industry."
+        imgSrc: "/agents/vehicle.svg", agentText: "Vehicle Data Agent", info: "Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search."
     }
     ,
     {
@@ -49,9 +50,7 @@ const agents = [
         imgSrc: "/agents/sentiment.svg", agentText: "Customer Sentiment", info: "Scrapes the web to find customer sentiments about the company and presents the findings at aggregate level."
     },
     {
-        imgSrc: "/agents/chat.svg",
-        agentText: "Personalized Recommendation",
-        info: "Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics."
+        imgSrc: "/agents/chat.svg", agentText: "Personalized Recommendation", info: "Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics."
     }
 ]
 
@@ -128,7 +127,7 @@ export default function Home() {
         }
 
 
-        // console.log('values', e)
+        console.log('values', e)
         agentMutation.mutate(e)
     }
 
@@ -187,6 +186,18 @@ export default function Home() {
                         </>}
                     </div>
                 }
+                {agent == '1' && <div className="flex flex-col gap-4">
+
+                    <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " />
+                    <BaseTextArea minRows={1} control={control} name="project_description" rules={{ required: "Enter Project Description", validate: (value) => ["insurance", "life", "health", "property", "coverage", "policy", "claims"].find((e) => value.toLowerCase().includes(e)) ? true : `The project description must be related to the insurance industry. Please provide a valid insurance-related project which includes any of these keywords ${["insurance", "life", "health", "property", "coverage", "policy", "claims"].join(', ')}.` }} label="Project Description" labelPlacement="outside" placeholder="Enter Project Description" />
+                </div>}
+
+                {agent == '3' && <div className="flex flex-col gap-4">
+                    <BaseTextArea minRows={1} control={control} name="topic" rules={{ required: "Enter Topic Name" }} label="Topic" labelPlacement="outside" placeholder="Enter Topic Name " />
+                    <BaseTextArea minRows={1} control={control} name="name" rules={{required:"Enter Plan"}} label="Plan" labelPlacement="outside" placeholder="Enter Plan" />
+                    <BaseTextArea minRows={1} control={control} name="description" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
+                    <BaseTextArea minRows={1} control={control} name="target_audience" rules={{required:"Enter Target Audience"}} label="Target Audience" labelPlacement="outside" placeholder="Enter Target Audience" />
+                </div>}
                 <div className="flex justify-end gap-4">
                     {/* <BaseButton onClick={()=>{
                         reset({desc:""})
@@ -250,7 +261,7 @@ export default function Home() {
                         </div>
                     }
                     )}
-                    {(agent == '2' || agent == '9') && data?.map((e: any, number: number) =>
+                    {(agent == '2' || agent == '9' || agent == '1' || agent=='3') && data?.map((e: any, number: number) =>
                     (
                         <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                             <div className="flex flex-col gap-4">
