@@ -10,7 +10,14 @@ import { toast } from "react-toastify";
 
 export default function HomeNavbar(){
     const router=useRouter()
-    const logoutMutation=useMutation(()=> axiosInstance.post('/logout'))
+    const logoutMutation=useMutation(()=> axiosInstance.post('/logout'),{
+        onSuccess(data, variables, context) {
+            router.refresh()
+        },
+        onError(error, variables, context) {
+            router.refresh()
+        },
+    })
     return(
         <>
         <nav className="flex sm:justify-between justify-center sm:gap-0 gap-4 p-4 border-b-1 flex-wrap border-main-2 bg-backgroundColors-1">
