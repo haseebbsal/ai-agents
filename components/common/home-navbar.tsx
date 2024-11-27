@@ -6,7 +6,6 @@ import Cookies from 'js-cookie'
 import { useMutation } from "react-query";
 import { axiosInstance } from "@/utils/instance";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 
 export default function HomeNavbar(){
     const router=useRouter()
@@ -14,7 +13,7 @@ export default function HomeNavbar(){
     return(
         <>
         <nav className="flex sm:justify-between justify-center sm:gap-0 gap-4 p-4 border-b-1 flex-wrap border-main-2 bg-backgroundColors-1">
-            <Link href={'/'}><Image src={'/common/logo.svg'} alt="home logo" width={200} height={200}/></Link>
+            <Link href={'/'}><Image src={'/common/logo.svg'} alt="home logo" className="w-[200px] h-[40px] object-contain" width={200} height={200}/></Link>
             
             {!Cookies.get('accessToken') && <div className="flex gap-4">
                 <Link className="bg-main-1 text-white min-w-28 flex items-center justify-center rounded-lg" href={'/login'}>Sign In</Link>
