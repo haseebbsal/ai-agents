@@ -15,7 +15,7 @@ import BaseInput from "@/components/form/base-input";
 import BaseAgentInput from "@/components/form/base-input-agent";
 import BaseRadioGroup from "@/components/form/base-radio";
 import BaseSelect from "@/components/form/base-select";
-
+// jj
 const agents = [
     {
         imgSrc: "/agents/seo.svg", agentText: "SEO Search Agent", info: "Searches the web for relevant keywords for SEO and advertising strategies."
