@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 import { FieldValues, useForm } from "react-hook-form"
 import { useMutation } from "react-query"
 import { toast } from "react-toastify"
+import Cookies from "js-cookie"
 
 interface RegisterData{
     email:string,
@@ -19,6 +20,10 @@ export default function Login() {
     const registerMutation=useMutation((data:RegisterData)=> axiosInstance.post('/auth/register',data),{
         onSuccess(data) {
             console.log('sucess',data.data)
+            const {accessToken,refreshToken}=data.data.tokens
+            Cookies.set('accessToken',accessToken)
+            Cookies.set('refreshToken',refreshToken)
+            Cookies.set('userData',JSON.stringify({email:data.data.email}))
             router.replace('/')
             router.refresh()
         },
