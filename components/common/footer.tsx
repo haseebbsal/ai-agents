@@ -11,7 +11,7 @@ export default function Footer() {
                         <FaTwitter />
                         <FaFacebookSquare />
                     </div>
-                    <p className="text-center">Copyright OnStartups LLC, All Rights Reserved | <span className="text-text-2">Terms of Use |</span> <span className="text-text-2">Privacy Policy</span></p>
+                    <p className="text-center">All Rights Reserved | <span className="text-text-2">Terms of Use |</span> <span className="text-text-2">Privacy Policy</span></p>
                 </div>
             </div>
         </>

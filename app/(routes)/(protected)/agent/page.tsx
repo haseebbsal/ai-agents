@@ -63,17 +63,20 @@ export default function Home() {
             if (agent == '0') {
                 const newData = data.data.result.tasks_output.map((e: any, number: number) => {
                     if (number == 1) {
-                        const opo = e.raw.slice(e.raw.indexOf('|')).split('\n')
+
+                        const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')).split('\n')
+                        const insights = e.raw.slice(e.raw.lastIndexOf('|')+1)
                         const note = opo.slice(opo.length - 1)
                         const data = opo.slice(0, opo.length - 1)
                         const tableColumns = data[0].slice(1).split('|')
-                        const tableData = data.slice(2, data.length - 1).map((f: any) => f.slice(1).split('|'))
+                        const tableData = data.slice(2, data.length - 1).map((f:any) => f.slice(1).split('|'))
 
                         return {
                             ...e,
                             tableData,
                             tableColumns,
-                            note
+                            note,
+                            insights
                         }
                     }
                     return e
@@ -145,6 +148,7 @@ export default function Home() {
                 {
                     agent == '0' && <div className="flex flex-col gap-4">
                         <BaseTextArea control={control} name="project_description" rules={{ required: "Enter Keywords" }} label="Enter Keywords" labelPlacement="outside" placeholder="Enter Comma Seperated Keywords" minRows={1} />
+                        <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
                         <BaseTextArea control={control} name="customer_domain" rules={{}} label="Enter Website URL (Optional)" labelPlacement="outside" placeholder="Enter Website Url" minRows={1} />
                     </div>
                 }
@@ -164,6 +168,7 @@ export default function Home() {
                 {
                     agent == '9' && <div className="flex flex-col gap-4">
                         <BaseTextArea minRows={1} control={control} name="company_name" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
+                        <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
                         <BaseTextArea minRows={1} control={control} name="company_variations" rules={{}} label="Company Variations (optional)" labelPlacement="outside" placeholder="Enter Comma Seperated Company Variations e.g.( Life Insurance Corporation of India, Jubilee Life Insurance Company Limited)" />
                     </div>
                 }
@@ -189,14 +194,16 @@ export default function Home() {
                 {agent == '1' && <div className="flex flex-col gap-4">
 
                     <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " />
+                    <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
                     <BaseTextArea minRows={1} control={control} name="project_description" rules={{ required: "Enter Project Description", validate: (value) => ["insurance", "life", "health", "property", "coverage", "policy", "claims"].find((e) => value.toLowerCase().includes(e)) ? true : `The project description must be related to the insurance industry. Please provide a valid insurance-related project which includes any of these keywords ${["insurance", "life", "health", "property", "coverage", "policy", "claims"].join(', ')}.` }} label="Project Description" labelPlacement="outside" placeholder="Enter Project Description" />
                 </div>}
 
                 {agent == '3' && <div className="flex flex-col gap-4">
                     <BaseTextArea minRows={1} control={control} name="topic" rules={{ required: "Enter Topic Name" }} label="Topic" labelPlacement="outside" placeholder="Enter Topic Name " />
-                    <BaseTextArea minRows={1} control={control} name="name" rules={{required:"Enter Plan"}} label="Plan" labelPlacement="outside" placeholder="Enter Plan" />
+                    <BaseTextArea minRows={1} control={control} name="name" rules={{ required: "Enter Plan" }} label="Plan" labelPlacement="outside" placeholder="Enter Plan" />
                     <BaseTextArea minRows={1} control={control} name="description" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
-                    <BaseTextArea minRows={1} control={control} name="target_audience" rules={{required:"Enter Target Audience"}} label="Target Audience" labelPlacement="outside" placeholder="Enter Target Audience" />
+                    <BaseTextArea minRows={1} control={control} name="target_audience" rules={{ required: "Enter Target Audience" }} label="Target Audience" labelPlacement="outside" placeholder="Enter Target Audience" />
+                    <BaseTextArea minRows={1} control={control} name="product_marketing_idea" rules={{ required: "Enter Product Marketing Idea" }} label="Product Marketing Idea" labelPlacement="outside" placeholder="Enter Product Marketing Idea" />
                 </div>}
                 <div className="flex justify-end gap-4">
                     {/* <BaseButton onClick={()=>{
@@ -255,13 +262,16 @@ export default function Home() {
                                             })}
                                         </TableBody>
                                     </Table>
+                                    <Markdown>
+                                        {e.insights}
+                                    </Markdown>
                                     <Markdown>{e.note[0]}</Markdown>
                                 </div>
                             </div>
                         </div>
                     }
                     )}
-                    {(agent == '2' || agent == '9' || agent == '1' || agent=='3') && data?.map((e: any, number: number) =>
+                    {(agent == '2' || agent == '9' || agent == '1' || agent == '3') && data?.map((e: any, number: number) =>
                     (
                         <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                             <div className="flex flex-col gap-4">
