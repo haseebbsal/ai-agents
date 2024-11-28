@@ -14,7 +14,7 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <div className="flex gap-4 items-center font-semibold">
             {/* <GiHamburgerMenu className="cursor-pointer" onClick={() => setShowSideBar(!showSideBar)} /> */}
-            <p>Distribution</p>
+            {/* <p>Distribution</p> */}
           </div>
           <div className="flex gap-1 items-center">
             <GoChevronLeft />
