@@ -16,7 +16,7 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                 {error && <p className="text-red-400 text-sm">{error.message}</p>}
                 <div className={`p-4 border-2 border-base-default rounded-lg ${extraClass}`}>
                     <div className="bg-content-14 flex items-center justify-center flex-col relative rounded-lg min-h-36 gap-2">
-                        <h1 className="">Drag your file here</h1>
+                        {/* <h1 className="">Drag your file here</h1> */}
                         <BaseLabel htmlFor="file" text="Browse Files" />
                         <input accept=".jpeg,.jpg,.png" className="absolute opacity-0" {...field} onChange={(e) => {
                             if (e.target.files?.length) {
