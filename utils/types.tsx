@@ -49,6 +49,7 @@ export interface BaseFileProps{
     headerText?:string
     name:string,
     control:Control<FieldValues>;
+    accept:string,
     rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined
 }
 

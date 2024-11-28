@@ -6,9 +6,9 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 
-export default function BaseFile({ showHeader, extraClass, headerText, name, control, rules }: BaseFileProps) {
+export default function BaseFile({ showHeader, extraClass, headerText, name, control, rules, accept }: BaseFileProps) {
     const { field, fieldState: { error } } = useController({ name, control, rules })
-    const [file,setFile]=useState<any>()
+    const [file, setFile] = useState<any>()
     return (
         <>
             <div className="flex flex-col gap-2">
@@ -18,20 +18,22 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                     <div className="bg-content-14 flex items-center justify-center flex-col relative rounded-lg min-h-36 gap-2">
                         {/* <h1 className="">Drag your file here</h1> */}
                         <BaseLabel htmlFor="file" text="Browse Files" />
-                        <input accept=".jpeg,.jpg,.png" className="absolute opacity-0" {...field} onChange={(e) => {
+                        <input accept={accept} className="absolute opacity-0" {...field} onChange={(e) => {
                             if (e.target.files?.length) {
-                                const file=e.target.files
+                                const file = e.target.files
                                 field.onChange(file)
                                 console.log(file[0])
-                                const convert=URL.createObjectURL(file[0])
-                                setFile(convert)
-                                console.log(convert)
+                                const convert = URL.createObjectURL(file[0])
+                                setFile(file[0])
+                                // console.log(convert)
                             }
-                        }}  value={undefined} type="file" id="file" />
+                        }} value={undefined} type="file" id="file" />
                     </div>
                 </div>
-                {file && <Image className='p-4 border-2 rounded-lg' src={file} width={200} height={200} alt='file'/>}
-                
+                {file  && !file.type.includes('pdf') && <Image className='p-4 border-2 rounded-lg' src={URL.createObjectURL(file)} width={200} height={200} alt='file' />}
+                {file  && file.type.includes('pdf') && <p className='p-4 border-2 rounded-lg'>{file.name}</p>}
+
+
             </div>
         </>
     )
