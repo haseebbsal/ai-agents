@@ -60,6 +60,8 @@ export default function DigitalTwinForm({ imgSrc, agentInfo, agentText, agent }:
         agentMutation.mutate(e)
     }
 
+    console.log('data',data)
+
 
     return (
         <>

@@ -96,7 +96,7 @@ export default function ChatForm({ imgSrc, agentInfo, agentText, agent }: AgentF
         sendChatMutation.mutate(data)
     }
 
-    console.log(chatUserQueries)
+    // console.log(chatUserQueries)
     useEffect(() => {
 
         if (chatFile) {

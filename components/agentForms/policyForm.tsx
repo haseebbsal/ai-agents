@@ -95,7 +95,7 @@ export default function PolicyForm({ imgSrc, agentInfo, agentText, agent }: Agen
         sendChatMutation.mutate(data)
     }
 
-    console.log(chatUserQueries)
+    // console.log(chatUserQueries)
     useEffect(() => {
 
         if(chatFile){

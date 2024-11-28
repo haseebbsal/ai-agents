@@ -22,7 +22,7 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                             if (e.target.files?.length) {
                                 const file = e.target.files
                                 field.onChange(file)
-                                console.log(file[0])
+                                // console.log(file[0])
                                 const convert = URL.createObjectURL(file[0])
                                 setFile(file[0])
                                 // console.log(convert)
