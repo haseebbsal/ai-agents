@@ -16,11 +16,11 @@ export default function Home() {
             {/* <GiHamburgerMenu className="cursor-pointer" onClick={() => setShowSideBar(!showSideBar)} /> */}
             {/* <p>Distribution</p> */}
           </div>
-          <div className="flex gap-1 items-center">
+          {/* <div className="flex gap-1 items-center">
             <GoChevronLeft />
             <GoChevronRight />
             <SlOptionsVertical className="text-xs" />
-          </div>
+          </div> */}
         </div>
         <div className="flex gap-4 w-full flex-wrap">
           {/* <BaseAgent agentId='7' setAgent={setAgent} imgSrc="/agents/vehicle.svg" agentText="Vehicle Data Agent" info="Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search." /> */}
