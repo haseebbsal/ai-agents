@@ -59,7 +59,7 @@ export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText
 
     return (
         <>
-            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 mr-4 mb-4">
+            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4 mb-4">
                 <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
                     <div className="flex gap-4 items-center font-semibold">
                         <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
@@ -96,7 +96,7 @@ export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText
                                 <div className="flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <p className="font-semibold">Agent:</p>
-                                        <p>{number == 0 ? "Competitor Data Retrieval" : number == 1 ? "Market Positioning" : number == 3 ? "Performance Matrix Analysis" : "Competitor Comparison"}</p>
+                                        <p>{e.agent}</p>
                                     </div>
                                     <div className="flex gap-4">
                                         <p className="font-semibold">Task Name:</p>
