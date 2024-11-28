@@ -31,7 +31,7 @@ const agents = [
         imgSrc: "/agents/customer.svg", agentText: "Digital Twin Agent", info: "Provide product developers and marketeers at insurance companies with a way of evaluating product ideas or marketing ideas against nine different insurance customer personas."
     },
     {
-        imgSrc: "/agents/chat.svg", agentText: "Chatbot Agent", info: "Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent."
+        imgSrc:"/agents/risk.svg" ,agentText:"User Id Agent", info:"Main function to initialize the IDReaderCrew and process the ID image." 
     },
     {
         imgSrc: "/agents/customer.svg", agentText: "Customer Research Agent", info: "Researcher a customer via public information."
@@ -87,6 +87,11 @@ export default function Home() {
             setData(data.data.result.tasks_output)
         },
     })
+    const agentFileMutation=useMutation((data:any)=>axiosInstance.postForm(`/agent/file/${agent}`,data),{
+        onSuccess(data, variables, context) {
+            console.log('file',data.data)
+        },
+    })
     console.log('agent', agent)
     console.log('data', data)
     if (!agent) {
@@ -131,7 +136,16 @@ export default function Home() {
 
 
         console.log('values', e)
-        agentMutation.mutate(e)
+        if(agent!='4'){
+            agentMutation.mutate(e)
+            return
+        }
+        const formData=new FormData()
+        // console.log(e.agent[0])
+        formData.append('file',e.agent[0])
+        agentFileMutation.mutate(formData)
+
+
     }
 
     return (
@@ -191,6 +205,9 @@ export default function Home() {
                         </>}
                     </div>
                 }
+                {agent=='4' && <div className="flex flex-col gap-4">
+                    <BaseFile headerText="Upload User Id Picture" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                    </div>}
                 {agent == '1' && <div className="flex flex-col gap-4">
 
                     <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " />
@@ -209,7 +226,7 @@ export default function Home() {
                     {/* <BaseButton onClick={()=>{
                         reset({desc:""})
                     }} variant="bordered" extraClass="min-w-40 bg-transparent text-main-1 border-main-1 ">Reset</BaseButton> */}
-                    <BaseButton isDisabled={agentMutation.isLoading} isLoading={agentMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
+                    <BaseButton isDisabled={agentMutation.isLoading|| agentFileMutation.isLoading} isLoading={agentMutation.isLoading || agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
                 <div className=" overflow-auto max-h-[40rem]">
                     {agent == '0' && data && data?.map((e: any, number: number) => {
@@ -314,6 +331,9 @@ export default function Home() {
                             </div>
                         )
                         )
+                    }
+                    {
+                        agent=='4' && agentFileMutation.data?.data &&<Markdown>{agentFileMutation.data.data.result.raw}</Markdown>
                     }
                 </div>
 
