@@ -31,7 +31,7 @@ const agents = [
         imgSrc: "/agents/customer.svg", agentText: "Digital Twin Agent", info: "Provide product developers and marketeers at insurance companies with a way of evaluating product ideas or marketing ideas against nine different insurance customer personas."
     },
     {
-        imgSrc:"/agents/risk.svg" ,agentText:"User Id Agent", info:"Main function to initialize the IDReaderCrew and process the ID image." 
+        imgSrc:"/agents/risk.svg" ,agentText:"User Id Agent", info:"Main function to process the ID image." 
     },
     {
         imgSrc: "/agents/customer.svg", agentText: "Customer Research Agent", info: "Researcher a customer via public information."
