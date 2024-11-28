@@ -64,15 +64,15 @@ axiosInstance.interceptors.response.use((response:AxiosResponse) => {
         Cookies.remove('userData')
         window.location.href='/login'
     }
+
+    // console.log('errorrrrrrrrr',error.response?.data)
     if((error.response?.data as any).detail == "Unauthorized") {
         console.log('token expired')
         const refreshToken = Cookies.get('refreshToken')
+        // console.log('refreshhhh',refreshToken)
         try {
-            const refreshTokenFetch=await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/tokens`, {
-                headers: {
-                    Authorization:`Bearer ${refreshToken}`
-                }
-            })
+            const refreshTokenFetch=await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/tokens`,{refreshToken})
+            console.log(refreshTokenFetch.data)
             const { access_token, refresh_token } = refreshTokenFetch.data
             console.log('new tokens set',access_token,refreshToken)
             Cookies.set('accessToken', access_token)
@@ -88,6 +88,7 @@ axiosInstance.interceptors.response.use((response:AxiosResponse) => {
                 Cookies.remove('userData')
                 Cookies.remove('accessToken')
                 Cookies.remove('refreshToken')
+                window.location.href='/login'
             }
             catch(e) {
                 console.log('userdata error', e)

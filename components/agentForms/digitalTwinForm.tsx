@@ -6,13 +6,8 @@ import { axiosInstance } from "@/utils/instance"
 import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
+import { AgentFormInteface } from "@/utils/types"
 
-interface AgentFormInteface {
-    imgSrc: string,
-    agentText: string,
-    agentInfo: string,
-    agent: string
-}
 export default function DigitalTwinForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()
@@ -74,10 +69,11 @@ export default function DigitalTwinForm({ imgSrc, agentInfo, agentText, agent }:
                 </div>
                 <p className="text-text-1">{agentInfo}</p>
                 <div className="flex flex-col gap-4">
-                    <BaseTextArea minRows={1} control={control} name="topic" rules={{ required: "Enter Topic Name" }} label="Topic" labelPlacement="outside" placeholder="Enter Topic Name " />
+                    {/* <BaseTextArea minRows={1} control={control} name="topic" rules={{ required: "Enter Topic Name" }} label="Topic" labelPlacement="outside" placeholder="Enter Topic Name " />
                     <BaseTextArea minRows={1} control={control} name="name" rules={{ required: "Enter Plan" }} label="Plan" labelPlacement="outside" placeholder="Enter Plan" />
                     <BaseTextArea minRows={1} control={control} name="description" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
-                    <BaseTextArea minRows={1} control={control} name="target_audience" rules={{ required: "Enter Target Audience" }} label="Target Audience" labelPlacement="outside" placeholder="Enter Target Audience" />
+                    <BaseTextArea minRows={1} control={control} name="target_audience" rules={{ required: "Enter Target Audience" }} label="Target Audience" labelPlacement="outside" placeholder="Enter Target Audience" /> */}
+                    <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
                     <BaseTextArea minRows={1} control={control} name="product_marketing_idea" rules={{ required: "Enter Product Marketing Idea" }} label="Product Marketing Idea" labelPlacement="outside" placeholder="Enter Product Marketing Idea" />
                 </div>
                 <div className="flex justify-end gap-4">
@@ -92,7 +88,7 @@ export default function DigitalTwinForm({ imgSrc, agentInfo, agentText, agent }:
                                 <div className="flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <p className="font-semibold">Agent:</p>
-                                        <p>{number == 0 ? "Competitor Data Retrieval" : number == 1 ? "Market Positioning" : number == 3 ? "Performance Matrix Analysis" : "Competitor Comparison"}</p>
+                                        <p>{e.agent}</p>
                                     </div>
                                     <div className="flex gap-4">
                                         <p className="font-semibold">Task Name:</p>

@@ -9,12 +9,8 @@ import BaseFile from "../form/base-file"
 import BaseAgentInput from "../form/base-input-agent"
 import { IoSend } from "react-icons/io5";
 import { FaRobot, FaUser } from "react-icons/fa"
-interface AgentFormInteface {
-    imgSrc: string,
-    agentText: string,
-    agentInfo: string,
-    agent: string
-}
+import { AgentFormInteface } from "@/utils/types"
+
 export default function PolicyForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const chatRef = useRef<any>()
     const { control, handleSubmit, reset, getValues } = useForm()

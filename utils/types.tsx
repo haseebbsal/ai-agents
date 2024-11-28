@@ -34,6 +34,13 @@ export interface BaseRadioGroupProps extends RadioGroupProps{
     data:string[]
 }
 
+export interface AgentFormInteface {
+    imgSrc: string,
+    agentText: string,
+    agentInfo: string,
+    agent: string
+}
+
 
 export interface BaseSelectProps extends Omit<SelectProps,'children'>{
     control:Control<FieldValues>;

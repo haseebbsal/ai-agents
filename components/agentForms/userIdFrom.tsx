@@ -5,13 +5,9 @@ import { axiosInstance } from "@/utils/instance"
 import { useMutation } from "react-query"
 import Markdown from "react-markdown"
 import BaseFile from "../form/base-file"
+import { AgentFormInteface } from "@/utils/types"
 
-interface AgentFormInteface {
-    imgSrc: string,
-    agentText: string,
-    agentInfo: string,
-    agent: string
-}
+
 export default function UserIdForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const agentFileMutation = useMutation((data: any) => axiosInstance.postForm(`/agent/file/${agent}`, data), {

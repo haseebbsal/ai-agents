@@ -7,13 +7,9 @@ import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react"
+import { AgentFormInteface } from "@/utils/types"
 
-interface AgentFormInteface {
-    imgSrc: string,
-    agentText: string,
-    agentInfo: string,
-    agent: string
-}
+
 export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()

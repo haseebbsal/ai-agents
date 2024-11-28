@@ -6,16 +6,9 @@ import { axiosInstance } from "@/utils/instance"
 import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react"
-import BaseAgentInput from "../form/base-input-agent"
-import BaseSelect from "../form/base-select"
+import { AgentFormInteface } from "@/utils/types"
 
-interface AgentFormInteface {
-    imgSrc: string,
-    agentText: string,
-    agentInfo: string,
-    agent: string
-}
+
 export default function MarketingForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()
@@ -75,7 +68,7 @@ export default function MarketingForm({ imgSrc, agentInfo, agentText, agent }: A
                 </div>
                 <p className="text-text-1">{agentInfo}</p>
                 <div className="flex flex-col gap-4">
-                    <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " />
+                    {/* <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " /> */}
                     <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
                     <BaseTextArea minRows={1} control={control} name="project_description" rules={{ required: "Enter Project Description", validate: (value) => ["insurance", "life", "health", "property", "coverage", "policy", "claims"].find((e) => value.toLowerCase().includes(e)) ? true : `The project description must be related to the insurance industry. Please provide a valid insurance-related project which includes any of these keywords ${["insurance", "life", "health", "property", "coverage", "policy", "claims"].join(', ')}.` }} label="Project Description" labelPlacement="outside" placeholder="Enter Project Description" />
                 </div>

@@ -1,16 +1,15 @@
 import Image from "next/image"
 import { FieldValues, useForm } from "react-hook-form"
+import BaseTextArea from "../form/base-textarea"
 import BaseButton from "../common/base-button"
 import { axiosInstance } from "@/utils/instance"
 import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
-import BaseAgentInput from "../form/base-input-agent"
-import BaseSelect from "../form/base-select"
 import { AgentFormInteface } from "@/utils/types"
 
 
-export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
+export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()
     const agentMutation = useMutation((data: any) => axiosInstance.post(`/agent/${agent}`, data), {
@@ -19,6 +18,7 @@ export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText
             setData(data.data.result.tasks_output)
         },
     })
+    
     function agentSubmit(e: FieldValues) {
         Object.entries(e).forEach((f) => {
             if (!f[1]) {
@@ -53,6 +53,7 @@ export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText
                 })
             }
         }
+        console.log(e)
         agentMutation.mutate(e)
     }
 
@@ -68,21 +69,9 @@ export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText
                 </div>
                 <p className="text-text-1">{agentInfo}</p>
                 <div className="flex flex-col gap-4">
-                    <BaseAgentInput name="customer_name" label='Name' labelPlacement="outside" control={control} rules={{ required: "Enter Your Name" }} placeholder="Enter Your Name" />
-                    <BaseSelect labelPlacement="outside" placeholder="Select Age Group" control={control} name="age_group" label="Select Age Group" rules={{ required: "Select Age Group" }} data={['20-30', '30-40', '40-50', '50-60', '60-70', '70-80']} />
-                    <BaseSelect labelPlacement="outside" placeholder="Select Entity" control={control} name="customer_segment" label="Select Entity" rules={{ required: "Select Entity" }} data={['Individual', 'Business', 'Specialized']} />
-                    {getValues().customer_segment == 'Individual' && <>
-                        <BaseAgentInput name="characteristics.type" label='Type Of Customer' labelPlacement="outside" control={control} rules={{ required: "Enter Type Of Customer" }} placeholder="Are you a Homeowner, Renter, Vehicle Owner, or Other?" />
-                        <BaseAgentInput name="characteristics.interest" label='Type Of Insurance' labelPlacement="outside" control={control} rules={{ required: "Enter Type Of Insurance" }} placeholder="What type of insurance are you looking for (e.g., Property, Life, Health)?" />
-                    </>}
-                    {getValues().customer_segment == 'Business' && <>
-                        <BaseAgentInput name="characteristics.industry" label='Industry' labelPlacement="outside" control={control} rules={{ required: "Enter Industry" }} placeholder="What industry is your business in (e.g., Technology, Manufacturing)?" />
-                        <BaseAgentInput name="characteristics.risk_concern" label='Primary Risk' labelPlacement="outside" control={control} rules={{ required: "Enter Primary Risk" }} placeholder="What is the primary risk your business wants to mitigate (e.g., cyber threats, liability)?" />
-                    </>}
-                    {getValues().customer_segment == 'Specialized' && <>
-                        <BaseAgentInput name="characteristics.type_of_entity" label='Type Of Specialized Entity' labelPlacement="outside" control={control} rules={{ required: "Enter Type Of Specialized Entity" }} placeholder="What type of specialized entity are you? (e.g., Airlines, Non-Profit Organization, Educational Institution)?" />
-                        <BaseAgentInput name="characteristics.specific_needs" label='Primary Insurance Need' labelPlacement="outside" control={control} rules={{ required: "Enter Primary Insurance Need" }} placeholder="What is the primary insurance need for your entity (e.g., Aviation Insurance, Liability, Health)?" />
-                    </>}
+                    {/* <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " /> */}
+                    <BaseTextArea minRows={1} control={control} name="area" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
+                    <BaseTextArea minRows={1} control={control} name="product_lines" rules={{ required: "Enter Product Lines" }} label="Product Lines" labelPlacement="outside" placeholder="Enter Relevant Insurance Product Lines For Emerging Risk Analysis Separated By Comma." />
                 </div>
                 <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentMutation.isLoading } isLoading={agentMutation.isLoading } type="submit" extraClass="min-w-40">Go</BaseButton>
@@ -96,7 +85,7 @@ export default function PersonalizedRecommendForm({ imgSrc, agentInfo, agentText
                                 <div className="flex flex-col gap-4">
                                     <div className="flex gap-4">
                                         <p className="font-semibold">Agent:</p>
-                                        <p>{number == 0 ? "Competitor Data Retrieval" : number == 1 ? "Market Positioning" : number == 3 ? "Performance Matrix Analysis" : "Competitor Comparison"}</p>
+                                        <p>{e.agent}</p>
                                     </div>
                                     <div className="flex gap-4">
                                         <p className="font-semibold">Task Name:</p>

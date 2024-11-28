@@ -6,13 +6,8 @@ import { axiosInstance } from "@/utils/instance"
 import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
+import { AgentFormInteface } from "@/utils/types"
 
-interface AgentFormInteface {
-    imgSrc: string,
-    agentText: string,
-    agentInfo: string,
-    agent: string
-}
 export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()

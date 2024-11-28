@@ -24,7 +24,8 @@ import CustomerSentimentForm from "@/components/agentForms/customerSentimentForm
 import PersonalizedRecommendForm from "@/components/agentForms/personalizedRecomForm";
 import PolicyForm from "@/components/agentForms/policyForm";
 import ChatForm from "@/components/agentForms/chatForm";
-// jj
+import EmergingRiskForm from "@/components/agentForms/emergingRiskForm";
+
 const agents = [
     {
         imgSrc: "/agents/seo.svg", agentText: "SEO Search", info: "Searches the web for relevant keywords for SEO and advertising strategies."
@@ -49,7 +50,7 @@ const agents = [
         imgSrc:"/agents/chat.svg", agentText:"Chat", info:"Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent"
     },
     {
-        imgSrc: "/agents/vehicle.svg", agentText: "Vehicle Data", info: "Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search."
+        imgSrc:"/agents/risk.svg", agentText:"Emerging Risk", info:"Provided an overview of emerging risks within a specific insurance product area."
     }
     ,
     {
@@ -78,6 +79,7 @@ export default function Home() {
             {agent=='4' && <UserIdForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent=='5' && <PolicyForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent=='6' && <ChatForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent=='7' && <EmergingRiskForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent=='9' && <CustomerSentimentForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent=='10' && <PersonalizedRecommendForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
         </>

@@ -33,11 +33,8 @@ export default async function Middleware(request: NextRequest) {
         }
         catch {
             try {
-                const refreshTokenChecking = await axios.get(`${process.env.BACKEND_URL}/auth/tokens`, {
-                    headers: {
-                        Authorization: `Bearer ${refreshToken}`
-                    }
-                })
+                const refreshTokenChecking = await axios.post(`${process.env.BACKEND_URL}/auth/tokens`, {refreshToken})
+                // console.log('refreshhh',refreshTokenChecking.data)
                 const { access_token, refresh_token } = refreshTokenChecking.data
                 const response = NextResponse.next()
                 console.log('new middleware refresh tokens set')
@@ -46,6 +43,7 @@ export default async function Middleware(request: NextRequest) {
                 return response
             }
             catch (e) {
+                // console.log('errrrrooooooor')
                 console.log('middleware refreshtoken error')
                 const { role } = userData
                 let response; 
