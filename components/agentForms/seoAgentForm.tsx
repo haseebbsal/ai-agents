@@ -83,7 +83,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
 
     return (
         <>
-            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4 mb-4">
+            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4  mb-4">
                 <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
                     <div className="flex gap-4 items-center font-semibold">
                         <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
