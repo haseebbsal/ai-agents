@@ -73,7 +73,7 @@ export default function DigitalTwinForm({ imgSrc, agentInfo, agentText, agent }:
                     <BaseTextArea minRows={1} control={control} name="name" rules={{ required: "Enter Plan" }} label="Plan" labelPlacement="outside" placeholder="Enter Plan" />
                     <BaseTextArea minRows={1} control={control} name="description" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
                     <BaseTextArea minRows={1} control={control} name="target_audience" rules={{ required: "Enter Target Audience" }} label="Target Audience" labelPlacement="outside" placeholder="Enter Target Audience" /> */}
-                    <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
+                    <BaseTextArea minRows={1} control={control} name="area" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
                     <BaseTextArea minRows={1} control={control} name="product_marketing_idea" rules={{ required: "Enter Product Marketing Idea" }} label="Product Marketing Idea" labelPlacement="outside" placeholder="Enter Product Marketing Idea" />
                 </div>
                 <div className="flex justify-end gap-4">
