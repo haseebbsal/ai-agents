@@ -9,13 +9,15 @@ import { FieldValues, useForm } from "react-hook-form"
 import { useMutation } from "react-query"
 import { toast } from "react-toastify"
 import Cookies from "js-cookie"
+import React from "react"
 
 interface RegisterData{
     email:string,
     password:string
 }
-export default function ChangePassword({searchParams:{email}}:{searchParams:{email:string}}) {
+export default function ChangePassword({searchParams}:{searchParams:any}) {
     const { handleSubmit, control ,watch} = useForm()
+    const { email } = React.use<any>(searchParams)
     const router=useRouter()
     const registerMutation=useMutation((data:RegisterData)=> axiosInstance.post('/auth/change-password',data),{
         onSuccess(data) {
