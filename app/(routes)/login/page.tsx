@@ -35,7 +35,7 @@ export default function Login() {
             <form onSubmit={handleSubmit(LoginSubmit)} className=" w-1/2   flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 mx-auto mb-4">
                 <div className="text-xl text-center font-semibold">Login</div>
                 <BaseAgentInput name="email" type="email" control={control} placeholder="Enter Email" labelPlacement="outside" label="Email" rules={{ required: "Enter Email" }} />
-                <BaseAgentInput name="password" type="password" control={control} placeholder="Enter Password" labelPlacement="outside" label="Password" rules={{ required: "Enter Email" }} />
+                <BaseAgentInput name="password" type="password" control={control} placeholder="Enter Password" labelPlacement="outside" label="Password" rules={{ required: "Enter Password" }} />
                 <BaseButton isLoading={loginMutation.isLoading} isDisabled={loginMutation.isLoading} type="submit" className="min-w-28">Log In</BaseButton>
             </form>
         </>

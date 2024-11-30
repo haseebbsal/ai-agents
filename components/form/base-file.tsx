@@ -18,7 +18,7 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                     <div className="bg-content-14 flex items-center justify-center flex-col relative rounded-lg min-h-36 gap-2">
                         {/* <h1 className="">Drag your file here</h1> */}
                         <BaseLabel htmlFor="file" text="Browse Files" />
-                        <input accept={accept} className="absolute opacity-0" {...field} onChange={(e) => {
+                        <input accept={accept} className="absolute opacity-0 z-0 " {...field} onChange={(e) => {
                             if (e.target.files?.length) {
                                 const file = e.target.files
                                 field.onChange(file)
