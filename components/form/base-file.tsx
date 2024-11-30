@@ -30,8 +30,8 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                         }} value={undefined} type="file" id="file" />
                     </div>
                 </div>
-                {file  && !file.type.includes('pdf') && <Image className='p-4 border-2 rounded-lg' src={URL.createObjectURL(file)} width={200} height={200} alt='file' />}
-                {file  && file.type.includes('pdf') && <p className='p-4 border-2 rounded-lg'>{file.name}</p>}
+                {file  && (file.type.includes('png') || file.type.includes('jpg') || file.type.includes('jpeg')) && <Image className='p-4 border-2 rounded-lg' src={URL.createObjectURL(file)} width={200} height={200} alt='file' />}
+                {file  && !(file.type.includes('png') || file.type.includes('jpg') || file.type.includes('jpeg')) && <p className='p-4 border-2 rounded-lg'>{file.name}</p>}
 
 
             </div>

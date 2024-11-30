@@ -27,6 +27,7 @@ import ChatForm from "@/components/agentForms/chatForm";
 import EmergingRiskForm from "@/components/agentForms/emergingRiskForm";
 import PersonResearchForm from "@/components/agentForms/personResearchForm";
 import CustomerReachForm from "@/components/agentForms/customerReach";
+import ContractOptimizationForm from "@/components/agentForms/contractOptimizationForm";
 
 const agents = [
     {
@@ -66,6 +67,9 @@ const agents = [
     },
     {
         imgSrc:"/agents/consumer.svg" ,agentText:"Customer Reach" ,info:"Collect Relevant Information About A Company."
+    },
+    {
+        imgSrc:"/agents/policy.svg" ,agentText:"Contract Optimization", info:"Optimize Contract Based On Industry Best Practices."
     }
 ]
 
@@ -90,6 +94,8 @@ export default function Home() {
             {agent == '9' && <CustomerSentimentForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '10' && <PersonalizedRecommendForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '11' && <CustomerReachForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '12' && <ContractOptimizationForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+
 
         </>
     )
