@@ -14,18 +14,14 @@ interface RegisterData{
     email:string,
     password:string
 }
-export default function Register() {
+export default function ChangePassword({searchParams:{email}}:{searchParams:{email:string}}) {
     const { handleSubmit, control ,watch} = useForm()
     const router=useRouter()
-    const registerMutation=useMutation((data:RegisterData)=> axiosInstance.post('/auth/register',data),{
+    const registerMutation=useMutation((data:RegisterData)=> axiosInstance.post('/auth/change-password',data),{
         onSuccess(data) {
             console.log('sucess',data.data)
-            const {accessToken,refreshToken}=data.data.tokens
-            Cookies.set('accessToken',accessToken)
-            Cookies.set('refreshToken',refreshToken)
-            Cookies.set('userData',JSON.stringify({email:data.data.email}))
-            router.replace('/')
-            router.refresh()
+            router.replace('/login')
+            // router.refresh()
         },
         onError(error:any) {
             toast.error(error.response.data.detail)
@@ -34,7 +30,7 @@ export default function Register() {
     })
     function LoginSubmit(e: FieldValues) {
         const data={
-            email:e.email,
+            email,
             password:e.password
         }
         registerMutation.mutate(data as RegisterData)
@@ -43,11 +39,11 @@ export default function Register() {
     return (
         <>
             <form onSubmit={handleSubmit(LoginSubmit)} className=" sm:w-1/2 w-[90%]  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 mx-auto mb-4">
-                <div className="text-xl text-center font-semibold">Register</div>
-                <BaseAgentInput name="email" type="email" control={control} placeholder="Enter Email" labelPlacement="outside" label="Email" rules={{ required: "Enter Email" }} />
-                <BaseAgentInput name="password" type="password" control={control} placeholder="Enter Password" labelPlacement="outside" label="Password" rules={{ required: "Enter Password" }} />
+                <div className="text-xl text-center font-semibold">Change Password</div>
+                {/* <BaseAgentInput name="email" type="email" control={control} placeholder="Enter Email" labelPlacement="outside" label="Email" rules={{ required: "Enter Email" }} /> */}
+                <BaseAgentInput name="password" type="password" control={control} placeholder="Enter New Password" labelPlacement="outside" label="New Password" rules={{ required: "Enter New Password" }} />
                 <BaseAgentInput name="confirm-password" type="password" control={control} placeholder="Enter Confirm Password" labelPlacement="outside" label="Confirm Password" rules={{ required: "Enter Confirm Password" ,validate:(value)=>watch('password')==value?true:'Passwords Dont Match'}} />
-                <BaseButton isLoading={registerMutation.isLoading} isDisabled={registerMutation.isLoading} type="submit" className="min-w-28">Register</BaseButton>
+                <BaseButton isLoading={registerMutation.isLoading} isDisabled={registerMutation.isLoading} type="submit" className="min-w-28">Submit</BaseButton>
             </form>
         </>
     )
