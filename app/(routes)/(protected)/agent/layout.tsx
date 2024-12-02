@@ -1,6 +1,7 @@
 'use client';
 
 import { navContext } from "@/providers/nav-provider";
+import { usePathname } from "next/navigation";
 import { ReactNode, useContext } from "react";
 
 const instructions = [
@@ -27,7 +28,7 @@ Use the recommendations to refine your SEO strategy, improve keyword usage, or e
 
 
 
-`Provide Input: Enter campaign details, target audience, or geographical location for tailored results.
+    `Provide Input: Enter campaign details, target audience, or geographical location for tailored results.
 
 Generate Insights: Click Start to receive actionable marketing recommendations and insights.
 
@@ -36,7 +37,7 @@ Review Results: Access comprehensive and structured outputs for immediate use.`,
 
 
 
-`Enter Competitor Names: Provide the names of one or two insurance companies in the input field.
+    `Enter Competitor Names: Provide the names of one or two insurance companies in the input field.
 Run Analysis: Click the "Analyze Competitors" button.
 Review Results: View the structured comparison of competitors, including metrics, strengths, weaknesses, and market positioning.    `,
 
@@ -44,7 +45,7 @@ Review Results: View the structured comparison of competitors, including metrics
 
 
 
-`Enter your product or marketing idea in the text input field.
+    `Enter your product or marketing idea in the text input field.
 Optionally, specify the geographical area for more targeted feedback.
 Run Evaluation:
 
@@ -61,7 +62,7 @@ Persona-specific insights.`,
 
 
 
-`Upload ID Image: Select and upload an image of the ID document.
+    `Upload ID Image: Select and upload an image of the ID document.
 Process Image: The agent will automatically process the uploaded image and extract key fields.
 View Extracted Data: Review the structured output showing the extracted fields (e.g., Name, Date of Birth, ID Number).
 Download/Copy Data: Save or copy the extracted data for further use.
@@ -72,7 +73,7 @@ Retry if Needed: If any errors occur, re-upload the image or contact support`,
 
 
 
-`
+    `
 Upload Document: Click the Upload button to add your policy document for analysis (PDF or text file).
 
 Ask Questions: Use the chatbot to type specific questions about policy terms, phrases, or clauses.
@@ -82,7 +83,7 @@ Simplified Explanations: Receive clear, easy-to-understand responses to your que
 
 
 
-`Select and upload the document you want to reference (e.g., policy wordings, claims process documents).
+    `Select and upload the document you want to reference (e.g., policy wordings, claims process documents).
 Interact with the Chatbot:
 
 After the document is uploaded, access the chat interface.
@@ -94,10 +95,10 @@ It supports questions about terms, clauses, and general document-related inquiri
 
 
 
-`Enter Geographical Location: Type the region or country you want to analyze (e.g., "Asia" or "United States").
+    `Enter Geographical Location: Type the region or country you want to analyze (e.g., "Asia" or "United States").
 Enter Product Lines: Input relevant insurance product lines separated by commas (e.g., "Health Insurance, Property Insurance").
 Click the 'Go' Button: Press "Go" to generate an analysis of emerging risks for the selected region and product lines.`,
-`Input the name of the person you want to research (e.g., "John Doe") or provide a direct social media link (e.g., Facebook, LinkedIn).
+    `Input the name of the person you want to research (e.g., "John Doe") or provide a direct social media link (e.g., Facebook, LinkedIn).
 Click the 'Search' Button:
 
 Press the "Search" button to initiate the agent's public information search.
@@ -110,7 +111,7 @@ Use the insights for underwriting, claims evaluation, or other decision-making p
 
 
 
-`Enter Company Details: Provide the company name, web link, and any variations.
+    `Enter Company Details: Provide the company name, web link, and any variations.
 
 Specify Geographical Location (Optional): Input the region or location for a more targeted analysis.
 
@@ -120,7 +121,7 @@ Review Sentiment Report: View the categorized summary of customer sentiment (pos
 
 
 
-`Start Interaction: Open the chat interface to begin the process.
+    `Start Interaction: Open the chat interface to begin the process.
 
 Input Customer Details: Enter customer characteristics, preferences, or respond to guided questions in the chat.
 
@@ -130,7 +131,7 @@ Receive Recommendations: View a list of tailored insurance products relevant to 
 
 
 
-`Type the name of the company you want to research into the input field.
+    `Type the name of the company you want to research into the input field.
 Initiate Search
 
 Click the Search button to start the agent's data collection process.
@@ -147,7 +148,7 @@ Utilize the insights for sales strategies or underwriting risk assessment.`,
 
 
 
-`Upload Contract: Click the "Upload" button and select the contract (e.g., medical provider agreement or vehicle repair workshop contract) for analysis.
+    `Upload Contract: Click the "Upload" button and select the contract (e.g., medical provider agreement or vehicle repair workshop contract) for analysis.
 
 Initiate Analysis: Once the document is uploaded, the agent will process the contract to identify and interpret key terms, conditions, and provisions.
 
@@ -163,7 +164,7 @@ Review and Implement: Use the suggested improvements as a reference for renegoti
 
 
 
-`Upload CSV: Select and upload a 12-month budget or actuals CSV file.
+    `Upload CSV: Select and upload a 12-month budget or actuals CSV file.
 Enter Region: Specify the region or country for the forecast.
 Analyze & Forecast: The agent will process the data, analyze trends, and generate a revised forecast.
 View Results: Review the tabular summary, trends, and updated 12-month forecast.
@@ -172,7 +173,7 @@ Save Output: Copy or download the results for your planning.`,
 
 
 
-`Click the Upload button and select the document (e.g., policy wordings, claims process document) you want to reference.
+    `Click the Upload button and select the document (e.g., policy wordings, claims process document) you want to reference.
 Interact with the Chatbot
 
 Ask questions or start a conversation about the uploaded document using the chatbot interface.
@@ -186,14 +187,14 @@ Use the chatbot to clarify specific terms, clauses, or procedures mentioned in t
 
 
 
-`Respond to Questions: Answer the predefined questions verbally. The agent will guide you through gathering requirements for up to two or three functionalities per session.
+    `Respond to Questions: Answer the predefined questions verbally. The agent will guide you through gathering requirements for up to two or three functionalities per session.
 
 Review Generated User Stories: The agent will generate Agile user stories in the format: "As a [user], I want [function] so that [benefit]."`,
 
 
 
 
-`Upload Contract: Click the "Upload" button to select and upload the insurance contract document you want summarized.
+    `Upload Contract: Click the "Upload" button to select and upload the insurance contract document you want summarized.
 
 Initiate Summarization: Once the document is uploaded, the agent will begin analyzing and parsing the contract content.
 
@@ -207,13 +208,18 @@ Key terms and conditions`
 ]
 
 export default function AgentLayout({ children }: { children: ReactNode }) {
-    const { agent } = useContext(navContext)
+    const { agent,showInstructions } = useContext(navContext)
+    const pathname = usePathname()
     return (
         <div className="flex flex-1 flex-wrap gap-4 ">
-            <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg mb-4 ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 mr-4">
-                <p className="font-semibold text-center text-xl">Instructions</p>
-                <p>{instructions[Number(agent)]}</p>
-            </div>
+            {
+                !pathname.includes('onboarding') && showInstructions &&
+                <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg mb-4 ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 mr-4">
+                    <p className="font-semibold text-center text-xl">Instructions</p>
+                    <p>{instructions[Number(agent)]}</p>
+                </div>
+            }
+
             {children}
         </div>
     )

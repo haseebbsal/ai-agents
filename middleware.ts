@@ -65,7 +65,7 @@ export default async function Middleware(request: NextRequest) {
 export const config = {
     matcher: [
         "/",
-        '/agent',
+        '/agent/:path*',
         '/agents'
     ]
 }

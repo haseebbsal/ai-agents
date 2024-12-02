@@ -76,6 +76,15 @@ const agentsData = [
         ]
     },
     {
+        bgColor:"bg-[#CED4DA]",
+        categorization: "Claims Operations",
+        data: [
+            {
+                imgSrc: "/agents/policy.svg", agentText: "Claims Processing", info: "Compares a claim document against a series of preset rules.", agentId: '18'
+            },
+        ]
+    },
+    {
         bgColor:"bg-[#ADB5BD]",
         categorization: "Provider networks",
         data: [
@@ -102,6 +111,15 @@ const agentsData = [
         data: [
             {
                 imgSrc: "/agents/sentiment.svg", agentText: "User Story", info: "Writes user stories for agile software development requirements. Interviews the user and returns a software development requirements document.", agentId: '15'
+            },
+        ]
+    },
+    {
+        bgColor:"bg-[#495057]",
+        categorization: "HR & administration ",
+        data: [
+            {
+                imgSrc: "/agents/customer.svg", agentText: "Onboarding", info: "Guides new employees through the onboarding process, providing resources and answering common questions.", agentId: '19'
             },
         ]
     }

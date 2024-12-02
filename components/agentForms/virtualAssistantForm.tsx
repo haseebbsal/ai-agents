@@ -3,7 +3,7 @@ import { FieldValues, useForm } from "react-hook-form"
 import BaseButton from "../common/base-button"
 import { axiosInstance } from "@/utils/instance"
 import { useMutation } from "react-query"
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import Markdown from "react-markdown"
 import BaseFile from "../form/base-file"
 import BaseAgentInput from "../form/base-input-agent"
@@ -12,6 +12,7 @@ import { FaUser } from "react-icons/fa";
 import { FaRobot } from "react-icons/fa";
 import { AgentFormInteface } from "@/utils/types"
 import { FaRocketchat } from "react-icons/fa";
+import { navContext } from "@/providers/nav-provider"
 
 export default function VirtualAssistantForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const chatRef = useRef<any>()
@@ -19,12 +20,14 @@ export default function VirtualAssistantForm({ imgSrc, agentInfo, agentText, age
     const [chatFile, setChatFile] = useState<any>()
     const [chatUserQueries, setChatUserQueries] = useState<any>([])
     const [chatList, setChatList] = useState<any>([])
+    const { setShowInstructions } = useContext(navContext)
 
     const deleteFileMutation = useMutation((data: any) => axiosInstance.post(`/files`,data))
     const startChatMutation = useMutation((data: any) => axiosInstance.postForm(`/start/virtual-chat`, data), {
         onSuccess(data, variables, context) {
             console.log('file', data.data)
             setChatFile(data.data.result)
+            setShowInstructions(false)
         },
     })
 
@@ -41,40 +44,6 @@ export default function VirtualAssistantForm({ imgSrc, agentInfo, agentText, age
 
 
     function agentSubmit(e: FieldValues) {
-        Object.entries(e).forEach((f) => {
-            if (!f[1]) {
-                delete e[f[0]]
-            }
-            else if (f[0] == 'company_variations') {
-                e[f[0]] = f[1].split(',')
-            }
-        })
-
-        if (Object.keys(e).includes('characteristics')) {
-            const customer_segment = e['customer_segment']
-            if (customer_segment == 'Business') {
-                Object.entries(e['characteristics']).forEach((m) => {
-                    if (m[0] != 'industry' && m[0] != 'risk_concern') {
-                        delete e['characteristics'][m[0]]
-                    }
-                })
-            }
-            if (customer_segment == 'Specialized') {
-                Object.entries(e['characteristics']).forEach((m) => {
-                    if (m[0] != 'type_of_entity' && m[0] != 'specific_needs') {
-                        delete e['characteristics'][m[0]]
-                    }
-                })
-            }
-            if (customer_segment == 'Individual') {
-                Object.entries(e['characteristics']).forEach((m) => {
-                    if (m[0] != 'type' && m[0] != 'interest') {
-                        delete e['characteristics'][m[0]]
-                    }
-                })
-            }
-        }
-
         const formData = new FormData()
         Object.values(e.agent).forEach((f,number:number)=>{
             formData.append(`file`, f as any)
@@ -102,9 +71,11 @@ export default function VirtualAssistantForm({ imgSrc, agentInfo, agentText, age
         if (chatFile) {
             window.onbeforeunload = () => {
                 deleteFileMutation.mutate({files:chatFile})
+                setShowInstructions(true)
             }
             return () => {
                 deleteFileMutation.mutate({files:chatFile})
+                setShowInstructions(true)
             }
         }
     }, [chatFile])
@@ -120,7 +91,7 @@ export default function VirtualAssistantForm({ imgSrc, agentInfo, agentText, age
 
     return (
         <>
-            {!chatFile && <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4  mb-4">
+            {!chatFile && <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:ml-0 mr-4 ml-4 mb-4">
                 <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
                     <div className="flex gap-4 items-center font-semibold">
                         <Image src={imgSrc} alt="agent Icon" width={35} height={35} />

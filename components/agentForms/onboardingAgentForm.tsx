@@ -6,66 +6,37 @@ import { useMutation } from "react-query"
 import Markdown from "react-markdown"
 import BaseFile from "../form/base-file"
 import { AgentFormInteface } from "@/utils/types"
-import BaseTextArea from "../form/base-textarea"
 import { useState } from "react"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react"
-import { CSVLink, CSVDownload } from "react-csv";
 
-export default function AutomatedBudgetForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
+export default function OnboardingAgentForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
+    const [link, setLink] = useState<null | string>()
     const [data, setData] = useState<any>()
-    const [csvData, setCsvData] = useState<any>()
-    const agentFileMutation = useMutation((data: any) => axiosInstance.postForm(`/agent/file/${agent}`, data), {
+    const agentFileMutation = useMutation((data: any) => axiosInstance.postForm(`/start/onboarding-agent`, data), {
         onSuccess(data, variables, context) {
             console.log('file', data.data)
-            const newData = data.data.result.tasks_output.map((k: any, number: number) => {
-
-
-                if (k.raw.includes('|')) {
-                    let afterCsv = k.raw.split('\n')
-                    const startIndex = afterCsv.findIndex((e: any) => e.includes('|'))
-                    const endIndex = afterCsv.findLastIndex((e: any) => e.includes('|'))
-                    let initial = afterCsv.slice(0, startIndex).join('\n')
-                    let forecast = afterCsv.slice(endIndex + 1).join('\n')
-
-
-                    // let beforeTableStart=afterCsv.slice(0,startIndex).join('\n')
-                    // let afterTableFinish=afterCsv.slice(endIndex+1).join('\n')
-                    const splittedData = afterCsv.slice(startIndex, endIndex)
-                    console.log('splitted', splittedData)
-                    const columns = splittedData[0].split('|')
-                    const removeColumn = splittedData.slice(1)
-                    // const indexToSplitTableData=removeColumn.findIndex((e:any)=>!e.includes('-'))
-                    const tableData = removeColumn.slice(1).map((e: any) => e.split('|'))
-                    setCsvData([columns, ...tableData])
-
-                    return {
-                        ...k,
-                        columns,
-                        tableData,
-                        forecast,
-                        initial
-                    }
-                }
-
-                return k
-
-
-            })
-            setData(newData)
+            setLink(`${window.location.origin}/agent/onboarding/${data.data.result}`)
+            console.log('link', `${window.location.origin}/agent/onboarding/${data.data.result}`)
         },
     })
     console.log(data)
+
     function agentSubmit(e: FieldValues) {
         const formData = new FormData()
         formData.append('file', e.agent[0])
-        formData.append('region', e.region)
         agentFileMutation.mutate(formData)
     }
 
+    function copyLink() {
+   
+        navigator.clipboard.writeText(link!);
+    }
+
+
     return (
         <>
-            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4  sm:ml-0 mr-4 ml-4 mb-4">
+            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1 ml-4 flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:ml-0 mr-4 ml-4 mb-4">
                 <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
                     <div className="flex gap-4 items-center font-semibold">
                         <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
@@ -74,12 +45,10 @@ export default function AutomatedBudgetForm({ imgSrc, agentInfo, agentText, agen
                 </div>
                 <p className="text-text-1">{agentInfo}</p>
                 <div className="flex flex-col gap-4">
-                    <BaseFile accept=".csv" headerText="Upload 12-month budget file (.csv)" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
-                    <BaseTextArea minRows={1} control={control} name="region" rules={{ required: "Enter Region Or Country" }} label="Region Or Country" labelPlacement="outside" placeholder="Enter Region Or Country" />
+                    <BaseFile accept=".pdf" headerText="Upload Pdf Document" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                    {link && <BaseButton extraClass="w-max" onClick={copyLink}>Copy Shareable Link</BaseButton>}
                 </div>
-                <div className="flex justify-end gap-4 items-center">
-                    {csvData && <CSVLink data={csvData} filename="revised-budget.csv">Download Revised Budget</CSVLink>}
-                    
+                <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
                 <div className="  flex flex-col gap-8 w-full">

@@ -1,20 +1,7 @@
 'use client'
-import BaseButton from "@/components/common/base-button";
-import BaseFile from "@/components/form/base-file";
-import BaseTextArea from "@/components/form/base-textarea";
 import { navContext } from "@/providers/nav-provider";
-import { axiosInstance } from "@/utils/instance";
-import { Radio, RadioGroup, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Textarea } from "@nextui-org/react";
-import Image from "next/image";
-import { redirect, useRouter } from "next/navigation";
-import { useContext, useEffect, useRef, useState } from "react";
-import { FieldValues, useController, useForm } from "react-hook-form";
-import { useMutation } from "react-query";
-import Markdown from 'react-markdown'
-import BaseInput from "@/components/form/base-input";
-import BaseAgentInput from "@/components/form/base-input-agent";
-import BaseRadioGroup from "@/components/form/base-radio";
-import BaseSelect from "@/components/form/base-select";
+import { redirect} from "next/navigation";
+import { useContext } from "react";
 import SeoAgentForm from "@/components/agentForms/seoAgentForm";
 import MarketingForm from "@/components/agentForms/marketingForm";
 import DigitalTwinForm from "@/components/agentForms/digitalTwinForm";
@@ -33,6 +20,8 @@ import VirtualAssistantForm from "@/components/agentForms/virtualAssistantForm";
 import UserStoriesForm from "@/components/agentForms/userStories";
 import ContractSummarizerForm from "@/components/agentForms/contractSummarizer";
 import DocumentProcessorForm from "@/components/agentForms/documentProcessor";
+import ClaimsProcessingForm from "@/components/agentForms/claimsProcessing";
+import OnboardingAgentForm from "@/components/agentForms/onboardingAgentForm";
 
 const agents = [
     {
@@ -90,6 +79,12 @@ const agents = [
     },
     {
         imgSrc: "/agents/policy.svg", agentText: "Document Processing", info: "Extracts and processes policyholder information from digital documents, reducing administrative workload."
+    },
+    {
+        imgSrc: "/agents/policy.svg", agentText: "Claims Processing", info: "Compares a claim document against a series of preset rules."
+    },
+    {
+        imgSrc: "/agents/customer.svg", agentText: "Onboarding", info: "Guides new employees through the onboarding process, providing resources and answering common questions."
     }
 ]
 
@@ -119,6 +114,9 @@ export default function Home() {
             {agent == '15' && <UserStoriesForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '16' && <ContractSummarizerForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '17' && <DocumentProcessorForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '18' && <ClaimsProcessingForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '19' && <OnboardingAgentForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+
 
         </>
     )

@@ -18,7 +18,7 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                 <div className={`p-4 border-2 border-base-default rounded-lg ${extraClass}`}>
                     <div className="bg-content-14 flex items-center justify-center flex-col relative rounded-lg min-h-36 gap-2">
                         {/* <h1 className="">Drag your file here</h1> */}
-                        <BaseLabel htmlFor="file" text="Browse Files" />
+                        <BaseLabel htmlFor={name} text="Browse Files" />
                         <input multiple={multiple} accept={accept} className="absolute opacity-0 z-0 " {...field} onChange={(e) => {
                             if (e.target.files?.length) {
                                 const file = e.target.files
@@ -33,7 +33,7 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
                                 setFile(file[0])
                                 setFiles([])
                             }
-                        }} value={undefined} type="file" id="file" />
+                        }} value={undefined} type="file" id={name} />
                     </div>
                 </div>
                 {file  && (file.type.includes('png') || file.type.includes('jpg') || file.type.includes('jpeg')) && <Image className='p-4 border-2 rounded-lg' src={URL.createObjectURL(file)} width={200} height={200} alt='file' />}
