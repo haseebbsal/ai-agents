@@ -88,7 +88,6 @@ Use the Report:`,
         `Specify Geographical Location (Optional): Input the region or location for a more targeted analysis.`,
         `Run Sentiment Analysis: Click to initiate the agent’s search across public internet sources and social media platforms.`,
         `Review Sentiment Report: View the categorized summary of customer sentiment (positive, neutral, negative).`
-
     ],
     [
         `Start Interaction: Open the chat interface to begin the process.`,
@@ -155,6 +154,27 @@ Coverage details
 Exclusions
 Obligations
 Key terms and conditions`
+    ],
+    [
+        `Click "Upload Document" and select the Employee Handbook or HR Policy Manual.`,
+        `The system will parse and process the document, extracting key policies and information.`,
+        `After processing, the system will generate a unique chatbot link.`,
+        `Share the link with new employees via email or other communication channels.`,
+        `New employees click the shared link to access the chatbot.`,
+        `Employees ask questions, and the chatbot responds based on the Employee Handbook or HR Policy Manual.`,
+        `Employees receive accurate and helpful responses to their questions.`
+    ],
+    [
+        `Click "Upload Document" and select the relevant file from your computer.`,
+        `The system will read and categorize the document content. Review the results on the "Document Review" page.`,
+        `The system will check the document against predefined rules. View the compliance report on the "Report" page.`
+    ],
+    [
+     `Click "Upload Document" and select the file you want to translate and analyze.`,
+`The system will automatically detect the document language and translate it to English if necessary.`,
+`The system will read and interpret the document content to identify key points and relevant information.`,
+ `The system will categorize the document into a predefined insurance-related category.`,
+ `View the content analysis report highlighting key points and relevant information.`
     ]
 
 ]
