@@ -78,7 +78,7 @@ export default function AutomatedBudgetForm({ imgSrc, agentInfo, agentText, agen
                     <BaseTextArea minRows={1} control={control} name="region" rules={{ required: "Enter Region Or Country" }} label="Region Or Country" labelPlacement="outside" placeholder="Enter Region Or Country" />
                 </div>
                 <div className="flex justify-end gap-4 items-center">
-                    {csvData && <CSVLink data={csvData} filename="revised-budget.csv">Download Revised Budget</CSVLink>}
+                    {csvData && <CSVLink data={csvData} className="bg-main-1 text-white p-2 rounded-lg " filename="revised-budget.csv">Download Revised Budget</CSVLink>}
                     
                     <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
