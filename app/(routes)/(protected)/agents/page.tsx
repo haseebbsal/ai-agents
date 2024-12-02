@@ -9,7 +9,8 @@ import { SlOptionsVertical } from "react-icons/sl";
 
 const agentsData = [
     {
-        bgColor:"bg-[#F8F9FA]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "Underwriting",
         data: [
             {
@@ -27,7 +28,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#E9ECEF]",
+        bgColor: "bg-[#DEE2E6]",
         categorization: "Distribution",
         data: [
             {
@@ -51,17 +52,18 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#DEE2E6]",
+        bgColor: "bg-[#DEE2E6]",
         categorization: "Policy administration",
         data: [
             {
                 imgSrc: "/agents/policy.svg", agentText: "Document Processing", info: "Extracts and processes policyholder information from digital documents, reducing administrative workload.", agentId: '17'
             },
-          
+
         ]
     },
     {
-        bgColor:"bg-[#CED4DA]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "Customer service",
         data: [
             {
@@ -76,7 +78,8 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#CED4DA]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "Claims Operations",
         data: [
             {
@@ -85,7 +88,8 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#ADB5BD]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "Provider networks",
         data: [
             {
@@ -94,7 +98,8 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#6C757D]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "Finance",
         data: [
             {
@@ -106,7 +111,8 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#495057]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "IT",
         data: [
             {
@@ -115,7 +121,8 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#495057]",
+        bgColor: "bg-[#DEE2E6]",
+
         categorization: "HR & administration ",
         data: [
             {
@@ -143,7 +150,7 @@ export default function Agents() {
           </div> */}
                 </div>
                 <div className="flex gap-4 w-full flex-col flex-wrap">
-                    {agentsData.map((e,index:number) => <div key={index}  className={`flex flex-col !text-text-2 gap-4 ${e.bgColor} p-4 rounded-lg`}>
+                    {agentsData.map((e, index: number) => <div key={index} className={`flex flex-col !text-text-2 gap-4 ${e.bgColor} p-4 rounded-lg`}>
                         <h1 className="font-semibold text-xl">{e.categorization}</h1>
                         <div className="flex gap-4 w-full flex-wrap">
                             {e.data.map((j) => <BaseAgent key={j.agentId} {...j} setAgent={setAgent} />)}
