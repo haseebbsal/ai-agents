@@ -41,7 +41,7 @@ export default function ContractSummarizerForm({ imgSrc, agentInfo, agentText, a
                 <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
-                <div className=" overflow-auto max-h-[40rem]">
+                <div className=" overflow-auto max-h-[40rem] flex flex-col gap-8">
                     {
                         data?.map((e: any, number: number) =>
                         (
