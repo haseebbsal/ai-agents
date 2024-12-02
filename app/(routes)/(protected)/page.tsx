@@ -24,6 +24,9 @@ export default function Home() {
         </div>
         <div className="flex gap-4 w-full flex-wrap">
           {/* <BaseAgent agentId='7' setAgent={setAgent} imgSrc="/agents/vehicle.svg" agentText="Vehicle Data Agent" info="Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search." /> */}
+          <BaseAgent agentId='15' setAgent={setAgent} imgSrc="/agents/sentiment.svg" agentText="User Stories" info="User Story" />
+          <BaseAgent agentId='14' setAgent={setAgent} imgSrc="/agents/policy.svg" agentText="Virtual Assistant" info="Specialize in retrieving specific information from documents to assist with user inquiries." />
+          <BaseAgent agentId='13' setAgent={setAgent} imgSrc="/agents/marketing.svg" agentText="Automated Budget" info="Analyze and Give Insights On Decision Making Based On Financial Data." />
           <BaseAgent agentId='8' setAgent={setAgent} imgSrc="/agents/consumer.svg" agentText="Person Research" info="Research A Person Through A Name Or Link." />
           <BaseAgent agentId='7' setAgent={setAgent} imgSrc="/agents/risk.svg" agentText="Emerging Risk" info="Provided an overview of emerging risks within a specific insurance product area." />
           <BaseAgent agentId='5' setAgent={setAgent} imgSrc="/agents/policy.svg" agentText="Policy Word Explainer" info="Explains cover and exclusions in a simple to understand manner." />

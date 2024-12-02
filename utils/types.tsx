@@ -46,7 +46,7 @@ export interface BaseSelectProps extends Omit<SelectProps,'children'>{
     control:Control<FieldValues>;
     rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined;
     name:string;
-    data:string[]
+    data:(string | number)[]
 }
 
 
@@ -57,6 +57,7 @@ export interface BaseFileProps{
     name:string,
     control:Control<FieldValues>;
     accept:string,
+    multiple?:boolean,
     rules:Omit<RegisterOptions<FieldValues, string>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"> | undefined
 }
 

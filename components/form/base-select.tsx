@@ -14,7 +14,7 @@ export default function BaseSelect({control,name,rules,data,label,labelPlacement
             {...field}
             isInvalid={!!error}
             onSelectionChange={(k)=>{
-                field.onChange(k.currentKey)
+                field.onChange(Number(k.currentKey))
                 router.refresh()
             }}
             // onChange={()=>{

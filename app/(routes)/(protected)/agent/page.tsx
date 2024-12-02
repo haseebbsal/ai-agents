@@ -28,6 +28,9 @@ import EmergingRiskForm from "@/components/agentForms/emergingRiskForm";
 import PersonResearchForm from "@/components/agentForms/personResearchForm";
 import CustomerReachForm from "@/components/agentForms/customerReach";
 import ContractOptimizationForm from "@/components/agentForms/contractOptimizationForm";
+import AutomatedBudgetForm from "@/components/agentForms/automatedBudgetForm";
+import VirtualAssistantForm from "@/components/agentForms/virtualAssistantForm";
+import UserStoriesForm from "@/components/agentForms/userStories";
 
 const agents = [
     {
@@ -70,6 +73,15 @@ const agents = [
     },
     {
         imgSrc:"/agents/policy.svg" ,agentText:"Contract Optimization", info:"Optimize Contract Based On Industry Best Practices."
+    },
+    {
+        imgSrc:"/agents/marketing.svg" ,agentText:"Automated Budget" ,info:"Analyze and Give Insights On Decision Making Based On Financial Data."
+    },
+    {
+        imgSrc:"/agents/policy.svg" ,agentText:"Virtual Assistant" ,info:"Specialize in retrieving specific information from documents to assist with user inquiries."
+    },
+    {
+        imgSrc:"/agents/sentiment.svg" ,agentText:"User Stories" ,info:"User Story"
     }
 ]
 
@@ -95,6 +107,12 @@ export default function Home() {
             {agent == '10' && <PersonalizedRecommendForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '11' && <CustomerReachForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '12' && <ContractOptimizationForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '13' && <AutomatedBudgetForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '14' && <VirtualAssistantForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '15' && <UserStoriesForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+
+
+
 
 
         </>
