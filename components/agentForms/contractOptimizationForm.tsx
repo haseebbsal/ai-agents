@@ -74,7 +74,7 @@ export default function ContractOptimizationForm({ imgSrc, agentInfo, agentText,
                 <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
-                <div className=" overflow-auto max-h-[40rem]">
+                <div className=" ">
                 {
                         data?.map((e: any, number: number) =>
                         (

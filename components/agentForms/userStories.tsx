@@ -135,7 +135,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
                     </div>
 
                 </form>
-                <div className=" overflow-auto max-h-[40rem] flex flex-col gap-10">
+                <div className="  flex flex-col gap-10">
 
                     {
                         data && data?.map((e: any, number: number) => {

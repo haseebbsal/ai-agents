@@ -75,7 +75,7 @@ export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, ag
                 <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentMutation.isLoading } isLoading={agentMutation.isLoading } type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
-                <div className=" overflow-auto max-h-[40rem] flex flex-col gap-10">
+                <div className="  flex flex-col gap-10">
 
                     {
                         data?.map((e: any, number: number) =>

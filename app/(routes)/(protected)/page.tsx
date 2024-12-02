@@ -1,6 +1,7 @@
 'use client'
 import BaseAgent from "@/components/common/base-agent";
 import { navContext } from "@/providers/nav-provider";
+import Link from "next/link";
 import { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
@@ -22,26 +23,11 @@ export default function Home() {
             <SlOptionsVertical className="text-xs" />
           </div> */}
         </div>
-        <div className="flex gap-4 w-full flex-wrap">
+        <div className="flex gap-4 w-full flex-col flex-wrap items-center sm:w-1/2 mx-auto">
           {/* <BaseAgent agentId='7' setAgent={setAgent} imgSrc="/agents/vehicle.svg" agentText="Vehicle Data Agent" info="Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search." /> */}
-          <BaseAgent agentId='16' setAgent={setAgent} imgSrc="/agents/consumer.svg" agentText="Contract Summarizer" info="Summarize Your Contract" />
-          <BaseAgent agentId='15' setAgent={setAgent} imgSrc="/agents/sentiment.svg" agentText="User Stories" info="User Story" />
-          <BaseAgent agentId='14' setAgent={setAgent} imgSrc="/agents/policy.svg" agentText="Virtual Assistant" info="Specialize in retrieving specific information from documents to assist with user inquiries." />
-          <BaseAgent agentId='13' setAgent={setAgent} imgSrc="/agents/marketing.svg" agentText="Automated Budget" info="Analyze and Give Insights On Decision Making Based On Financial Data." />
-          <BaseAgent agentId='8' setAgent={setAgent} imgSrc="/agents/consumer.svg" agentText="Person Research" info="Research A Person Through A Name Or Link." />
-          <BaseAgent agentId='7' setAgent={setAgent} imgSrc="/agents/risk.svg" agentText="Emerging Risk" info="Provided an overview of emerging risks within a specific insurance product area." />
-          <BaseAgent agentId='5' setAgent={setAgent} imgSrc="/agents/policy.svg" agentText="Policy Word Explainer" info="Explains cover and exclusions in a simple to understand manner." />
-          <BaseAgent agentId='6' setAgent={setAgent} imgSrc="/agents/chat.svg" agentText="Chat" info="Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent" />
-          <BaseAgent agentId='4' setAgent={setAgent} imgSrc="/agents/vehicle.svg" agentText="User Id " info="Main function to process the ID image." />
-          <BaseAgent agentId='3' setAgent={setAgent} imgSrc="/agents/customer.svg" agentText="Digital Twin" info="Provide product developers and marketeers at insurance companies with a way of evaluating product ideas or marketing ideas against nine different insurance customer personas." />
-          <BaseAgent agentId='11' setAgent={setAgent} imgSrc="/agents/consumer.svg" agentText="Customer Reach" info="Collect Relevant Information About A Company." />
-          <BaseAgent agentId='2' setAgent={setAgent} imgSrc="/agents/competitor.svg" agentText="Competitor Analysis" info="Compares products and marketing ideas against insurance customer personas." />
-          <BaseAgent agentId='0' setAgent={setAgent} imgSrc="/agents/seo.svg" agentText="SEO Search" info="Searches the web for relevant keywords for SEO and advertising strategies." />
-          <BaseAgent agentId='9' setAgent={setAgent} imgSrc="/agents/sentiment.svg" agentText="Customer Sentiment" info="Scrapes the web to find customer sentiments about the company and presents the findings at aggregate level." />
-          <BaseAgent agentId='10' setAgent={setAgent} imgSrc="/agents/consumer.svg" agentText="Personalized Recommendation" info="Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics." />
-          <BaseAgent agentId='1' setAgent={setAgent} imgSrc="/agents/marketing.svg" agentText="Marketing" info="Creates ideas and content for marketing campaigns in the insurance industry." />
-          <BaseAgent agentId='12' setAgent={setAgent} imgSrc="/agents/policy.svg" agentText="Contract Optimization" info="Optimize Contract Based On Industry Best Practices." />
-
+          <p className="text-2xl font-semibold text-center">Welcome to Insurance Agents</p>
+          <p className="text-center">These agents have been built exclusively to help insurance professionals understand how to engage with artificial intelligence and AI agents. They are free to use and do not require any connectivity to any systems. Go ahead and enjoy using the AI agents. If you want us to build other agents or provide feedback, your input is very welcome. Please send your feedback to <span className="text-main-1">feedback@insurancebots.ai.</span></p>
+          <Link href={'/agents'} className="bg-main-1 text-white min-w-28 flex items-center justify-center rounded-lg  !h-[3rem] p-4">Check Out Our Agents</Link>
         </div>
       </div>
     </>

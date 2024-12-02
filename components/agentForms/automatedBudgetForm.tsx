@@ -112,7 +112,7 @@ export default function AutomatedBudgetForm({ imgSrc, agentInfo, agentText, agen
                 <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
-                <div className=" overflow-auto max-h-[40rem] flex flex-col gap-8 w-full">
+                <div className="  flex flex-col gap-8 w-full">
                     {
                         data?.map((e: any, number: number) => {
                             if (e.columns) {

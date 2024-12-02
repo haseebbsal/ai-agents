@@ -28,7 +28,7 @@ export default function BaseAgent({ agentText, info, imgSrc ,setAgent,agentId}: 
                     </div> */}
                 </div>
                 <p className="text-text-1">{info}</p>
-                <BaseButton onClick={navigate} style={{ marginTop: "auto" }}>Hire</BaseButton>
+                <BaseButton extraClass="sm:w-[10rem] mx-auto w-full " onClick={navigate} style={{ marginTop: "auto" }}>Hire</BaseButton>
             </div>
         </>
     )

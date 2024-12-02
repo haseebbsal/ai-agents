@@ -42,50 +42,50 @@ const agents = [
     }
     ,
     {
-        imgSrc: "/agents/competitor.svg", agentText: "Competitor Analysis", info: "Compares products and marketing ideas against insurance customer personas."
+        imgSrc: "/agents/competitor.svg", agentText: "Competitor Analysis", info: "Analyzes one or two competitors to understand competitive positioning."
     },
     {
-        imgSrc: "/agents/customer.svg", agentText: "Digital Twin ", info: "Provide product developers and marketeers at insurance companies with a way of evaluating product ideas or marketing ideas against nine different insurance customer personas."
+        imgSrc: "/agents/customer.svg", agentText: "Consumer Digital Twin", info: "Compares products and marketing ideas against insurance customer personas."
     },
     {
-        imgSrc: "/agents/risk.svg", agentText: "User Id ", info: "Main function to process the ID image."
+        imgSrc: "/agents/vehicle.svg", agentText: "Id Reader", info: "Returns the value of an uploaded ID document."
     },
     {
-        imgSrc: "/agents/policy.svg", agentText: "Policy Word Explainer", info: "Explains cover and exclusions in a simple to understand manner."
+        imgSrc: "/agents/policy.svg", agentText: "Policy Word Explainer", info: "Explains covers and exclusions in a simple to understand manner."
     },
     {
-        imgSrc: "/agents/chat.svg", agentText: "Chat", info: "Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent"
+        imgSrc: "/agents/chat.svg", agentText: "Chatbot", info: "Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent."
     },
     {
-        imgSrc: "/agents/risk.svg", agentText: "Emerging Risk", info: "Provided an overview of emerging risks within a specific insurance product area."
+        imgSrc: "/agents/risk.svg", agentText: "Emerging Risk Identification", info: "Provided an overview of emerging risks within a specific insurance product area."
     }
     ,
     {
-        imgSrc: "/agents/consumer.svg", agentText: "Person Research", info: "Research A Person Through A Name Or Link."
+        imgSrc: "/agents/consumer.svg", agentText: "Person Research", info: "Automates the gathering of relevant data from various sources, like public records and social media, to ensure comprehensive risk assessment."
     },
     {
-        imgSrc: "/agents/sentiment.svg", agentText: "Customer Sentiment", info: "Scrapes the web to find customer sentiments about the company and presents the findings at aggregate level."
+        imgSrc: "/agents/sentiment.svg", agentText: "Customer Sentiment", info: "Analyzes the web to find customer sentiments."
     },
     {
-        imgSrc: "/agents/consumer.svg", agentText: "Personalized Recommendation", info: "Personalized Recommendation Agent assists customer service agents and sales representatives by recommending relevant products based on customer responses and characteristics."
+        imgSrc: "/agents/consumer.svg", agentText: "Personalized Recommendation", info: "Suggests policy adjustments or additional coverage options based on input from the customer or agent."
     },
     {
-        imgSrc:"/agents/consumer.svg" ,agentText:"Customer Reach" ,info:"Collect Relevant Information About A Company."
+        imgSrc: "/agents/consumer.svg", agentText: "Company Research", info: "Researches a company for deeper understanding."
     },
     {
-        imgSrc:"/agents/policy.svg" ,agentText:"Contract Optimization", info:"Optimize Contract Based On Industry Best Practices."
+        imgSrc: "/agents/policy.svg", agentText: "Contract Optimization", info: "Suggests contract optimizations for clarity and ease of reading."
     },
     {
-        imgSrc:"/agents/marketing.svg" ,agentText:"Automated Budget" ,info:"Analyze and Give Insights On Decision Making Based On Financial Data."
+        imgSrc: "/agents/marketing.svg", agentText: "Automated Budget", info: "Assists finance teams in preparing budgets by analyzing past financial data and projecting future trends."
     },
     {
-        imgSrc:"/agents/policy.svg" ,agentText:"Virtual Assistant" ,info:"Specialize in retrieving specific information from documents to assist with user inquiries."
+        imgSrc: "/agents/policy.svg", agentText: "Virtual Assistant", info: "Provides 24/7 support to customer service agents, answering policy-related queries and guiding customers through self-service options (based on uploaded insurance policy or claims process)."
     },
     {
-        imgSrc:"/agents/sentiment.svg" ,agentText:"User Stories" ,info:"User Story"
+        imgSrc: "/agents/sentiment.svg", agentText: "User Story", info: "Writes user stories for agile software development requirements. Interviews the user and returns a software development requirements document."
     },
     {
-        imgSrc:"/agents/consumer.svg", agentText:"Contract Summarizer" ,info:"Summarize Your Contract"
+        imgSrc: "/agents/consumer.svg", agentText: "Contract Summarizer", info: "Summarizes key points from an uploaded contract."
     }
 ]
 

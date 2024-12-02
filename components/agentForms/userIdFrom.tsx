@@ -71,7 +71,7 @@ export default function UserIdForm({ imgSrc, agentInfo, agentText, agent }: Agen
                 <div className="flex justify-end gap-4">
                     <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                 </div>
-                <div className=" overflow-auto max-h-[40rem]">
+                <div className=" ">
                     {
                         agentFileMutation.data?.data && <Markdown>{agentFileMutation.data.data.result.raw}</Markdown>
                     }
