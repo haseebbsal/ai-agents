@@ -31,6 +31,7 @@ import ContractOptimizationForm from "@/components/agentForms/contractOptimizati
 import AutomatedBudgetForm from "@/components/agentForms/automatedBudgetForm";
 import VirtualAssistantForm from "@/components/agentForms/virtualAssistantForm";
 import UserStoriesForm from "@/components/agentForms/userStories";
+import ContractSummarizerForm from "@/components/agentForms/contractSummarizer";
 
 const agents = [
     {
@@ -82,6 +83,9 @@ const agents = [
     },
     {
         imgSrc:"/agents/sentiment.svg" ,agentText:"User Stories" ,info:"User Story"
+    },
+    {
+        imgSrc:"/agents/consumer.svg", agentText:"Contract Summarizer" ,info:"Summarize Your Contract"
     }
 ]
 
@@ -93,7 +97,6 @@ export default function Home() {
     }
     return (
         <>
-
             {agent == '0' && <SeoAgentForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '1' && <MarketingForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '2' && <CompetitorAnalysisForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
@@ -110,11 +113,7 @@ export default function Home() {
             {agent == '13' && <AutomatedBudgetForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '14' && <VirtualAssistantForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '15' && <UserStoriesForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
-
-
-
-
-
+            {agent == '16' && <ContractSummarizerForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
         </>
     )
 }
