@@ -9,7 +9,7 @@ import { SlOptionsVertical } from "react-icons/sl";
 
 const agentsData = [
     {
-        bgColor:"bg-[#eeeeef]",
+        bgColor:"bg-[#F8F9FA]",
         categorization: "Underwriting",
         data: [
             {
@@ -27,7 +27,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#ffdec9]",
+        bgColor:"bg-[#E9ECEF]",
         categorization: "Distribution",
         data: [
             {
@@ -51,7 +51,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#c9ebff]",
+        bgColor:"bg-[#DEE2E6]",
         categorization: "Policy administration",
         data: [
             {
@@ -61,7 +61,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#fec9ff]",
+        bgColor:"bg-[#CED4DA]",
         categorization: "Customer service",
         data: [
             {
@@ -76,7 +76,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#dafff1]",
+        bgColor:"bg-[#ADB5BD]",
         categorization: "Provider networks",
         data: [
             {
@@ -85,7 +85,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#fff8b3]",
+        bgColor:"bg-[#6C757D]",
         categorization: "Finance",
         data: [
             {
@@ -97,7 +97,7 @@ const agentsData = [
         ]
     },
     {
-        bgColor:"bg-[#f9bebd]",
+        bgColor:"bg-[#495057]",
         categorization: "IT",
         data: [
             {
@@ -125,7 +125,7 @@ export default function Agents() {
           </div> */}
                 </div>
                 <div className="flex gap-4 w-full flex-col flex-wrap">
-                    {agentsData.map((e,index:number) => <div key={index} className={`flex flex-col gap-4 ${e.bgColor} p-4 rounded-lg`}>
+                    {agentsData.map((e,index:number) => <div key={index}  className={`flex flex-col !text-text-2 gap-4 ${e.bgColor} p-4 rounded-lg`}>
                         <h1 className="font-semibold text-xl">{e.categorization}</h1>
                         <div className="flex gap-4 w-full flex-wrap">
                             {e.data.map((j) => <BaseAgent key={j.agentId} {...j} setAgent={setAgent} />)}
