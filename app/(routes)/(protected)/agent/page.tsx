@@ -32,6 +32,7 @@ import AutomatedBudgetForm from "@/components/agentForms/automatedBudgetForm";
 import VirtualAssistantForm from "@/components/agentForms/virtualAssistantForm";
 import UserStoriesForm from "@/components/agentForms/userStories";
 import ContractSummarizerForm from "@/components/agentForms/contractSummarizer";
+import DocumentProcessorForm from "@/components/agentForms/documentProcessor";
 
 const agents = [
     {
@@ -86,6 +87,9 @@ const agents = [
     },
     {
         imgSrc: "/agents/consumer.svg", agentText: "Contract Summarizer", info: "Summarizes key points from an uploaded contract."
+    },
+    {
+        imgSrc: "/agents/policy.svg", agentText: "Document Processing", info: "Extracts and processes policyholder information from digital documents, reducing administrative workload."
     }
 ]
 
@@ -114,6 +118,8 @@ export default function Home() {
             {agent == '14' && <VirtualAssistantForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '15' && <UserStoriesForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
             {agent == '16' && <ContractSummarizerForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+            {agent == '17' && <DocumentProcessorForm imgSrc={agents[Number(agent)].imgSrc} agent={agent} agentInfo={agents[Number(agent)].info} agentText={agents[Number(agent)].agentText} />}
+
         </>
     )
 }

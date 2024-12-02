@@ -51,6 +51,16 @@ const agentsData = [
         ]
     },
     {
+        bgColor:"bg-[#c9ebff]",
+        categorization: "Policy administration",
+        data: [
+            {
+                imgSrc: "/agents/policy.svg", agentText: "Document Processing", info: "Extracts and processes policyholder information from digital documents, reducing administrative workload.", agentId: '17'
+            },
+          
+        ]
+    },
+    {
         bgColor:"bg-[#fec9ff]",
         categorization: "Customer service",
         data: [
