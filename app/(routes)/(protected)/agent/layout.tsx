@@ -156,6 +156,19 @@ Obligations
 Key terms and conditions`
     ],
     [
+     `Click "Upload Document" and select the file you want to translate and analyze.`,
+`The system will automatically detect the document language and translate it to English if necessary.`,
+`The system will read and interpret the document content to identify key points and relevant information.`,
+ `The system will categorize the document into a predefined insurance-related category.`,
+ `View the content analysis report highlighting key points and relevant information.`
+    ],
+    [
+        `Click "Upload Document" and select the relevant file from your computer.`,
+        `The system will read and categorize the document content. Review the results on the "Document Review" page.`,
+        `The system will check the document against predefined rules. View the compliance report on the "Report" page.`
+    ],
+    
+    [
         `Click "Upload Document" and select the Employee Handbook or HR Policy Manual.`,
         `The system will parse and process the document, extracting key policies and information.`,
         `After processing, the system will generate a unique chatbot link.`,
@@ -164,19 +177,6 @@ Key terms and conditions`
         `Employees ask questions, and the chatbot responds based on the Employee Handbook or HR Policy Manual.`,
         `Employees receive accurate and helpful responses to their questions.`
     ],
-    [
-        `Click "Upload Document" and select the relevant file from your computer.`,
-        `The system will read and categorize the document content. Review the results on the "Document Review" page.`,
-        `The system will check the document against predefined rules. View the compliance report on the "Report" page.`
-    ],
-    [
-     `Click "Upload Document" and select the file you want to translate and analyze.`,
-`The system will automatically detect the document language and translate it to English if necessary.`,
-`The system will read and interpret the document content to identify key points and relevant information.`,
- `The system will categorize the document into a predefined insurance-related category.`,
- `View the content analysis report highlighting key points and relevant information.`
-    ]
-
 ]
 
 export default function AgentLayout({ children }: { children: ReactNode }) {
