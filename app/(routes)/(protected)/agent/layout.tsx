@@ -183,10 +183,10 @@ export default function AgentLayout({ children }: { children: ReactNode }) {
     const { agent, showInstructions } = useContext(navContext)
     const pathname = usePathname()
     return (
-        <div className="flex flex-1 flex-wrap gap-4 w-full">
+        <div className="flex flex-1 flex-wrap gap-4 w-full sm:p-0 p-4">
             {
                 !pathname.includes('onboarding') && showInstructions &&
-                <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg mb-4 ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 mr-4">
+                <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg mb-4 sm:ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 ">
                     <p className="font-semibold text-center text-xl">Instructions</p>
                     <ul className="flex flex-col gap-4 p-4">
                         {instructions[Number(agent)]?.map((e: any) =>
