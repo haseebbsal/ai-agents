@@ -102,7 +102,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
                 {
                     showCanvas && <VoiceVisualizer width={200} height={200} controls={recorderControls} mainBarColor="#113378" onlyRecording={true} isDefaultUIShown={true} isAudioProcessingTextShown={false} />
                 }
-                <form onSubmit={handleSubmit(agentSubmit)} className="flex flex-col gap-8">
+                <form onSubmit={handleSubmit(agentSubmit)} className="flex flex-col gap-8 w-full">
                     <div className="flex flex-col gap-4 ">
                        {!getValues('functionality') && <BaseSelect labelPlacement="outside" placeholder="Select Number Of Functionalities" control={control} name="functionality" label="How many functionalities would you like to define?" rules={{ required: "Select Number Of Functionalities" }} data={['1', '2', '3']} />} 
                     </div>
@@ -113,7 +113,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
 
                             <div key={`question ${e}`} className="flex flex-col gap-4">
 
-                                <div className="flex gap-8 items-end">
+                                <div className="flex gap-8 items-end flex-wrap">
                                     <div className="flex flex-col gap-4">
                                         <p className="font-semibold"> Functionality {number+1<=5?"1":number+1<=10?"2":"3"} Question {number+1<=5?number+1:number+1<=10?e-5:e-10}</p>
                                         <audio controls>
