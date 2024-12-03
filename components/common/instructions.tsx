@@ -92,7 +92,7 @@ Use the Report:`,
     ],
     [
         `Start Interaction: Open the chat interface to begin the process.`,
-        `Input Customer Details: Enter customer characteristics, preferences, or respond to guided questions in the chat.`,
+        `Input Customer Details: Enter customer name.`,
         `Analyze Inputs: The agent uses a predefined recommendation matrix to evaluate the customer’s needs based on your inputs.`,
         `Receive Recommendations: View a list of tailored insurance products relevant to the customer’s profile in the output window.`
     ],
