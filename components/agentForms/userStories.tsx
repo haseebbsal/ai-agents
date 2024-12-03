@@ -38,7 +38,8 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
     })
 
     function agentSubmit(e: FieldValues) {
-        if (audios.length != 5) {
+        console.log('audios',audios)
+        if (audios.length != Number(getValues('functionality'))*5) {
             setError("You Must Answer All Question Audios")
             return
         }
@@ -70,7 +71,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
         // console.log(recordedBlob);
         setAudios([...audios, new File([recordedBlob], "name")])
         setError(null)
-        if (currentQuestions.length != Number(getValues('functionality')*5)) {
+        if (currentQuestions.length != Number(getValues('functionality'))*5) {
             setCurrentQuestion([...currentQuestions, currentQuestions.length + 1])
         }
     }, [recordedBlob, error]);
@@ -114,7 +115,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
 
                                 <div className="flex gap-8 items-end">
                                     <div className="flex flex-col gap-4">
-                                        <p className="font-semibold"> Functionality {number+1<=5?"1":number+1<=10?"2":"3"} Question {number + 1}</p>
+                                        <p className="font-semibold"> Functionality {number+1<=5?"1":number+1<=10?"2":"3"} Question {number+1<=5?number+1:number+1<=10?e-5:e-10}</p>
                                         <audio controls>
                                             <source src={`/audios/question_${e}.wav`} type="audio/wav" />
                                             Your browser does not support the audio element.
