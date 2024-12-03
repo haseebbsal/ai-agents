@@ -17,7 +17,7 @@ export default function About() {
                 <h1 className="font-semibold">Simple, powerful AI at your fingertips</h1>
                 <p>Using our AI agents couldn’t be easier. After reading the brief instructions, simply provide a specific task and click the ‘Go’ button to receive the results. It’s a straightforward way to experience the future of insurance technology and understand the value AI can bring to your business.</p>
                 <h1 className="font-semibold">Get started today</h1>
-                <p>Discover how eData's AI agents can transform your insurance operations. Visit <span className="text-gray-400">InsuranceBots.ai</span> to begin your journey towards enhanced efficiency and smarter decision-making.</p>
+                <p>Discover how eData's AI agents can transform your insurance operations. Visit <a href={'https://www.insurancebots.ai'} target="_blank" className="text-gray-400">InsuranceBots.ai</a> to begin your journey towards enhanced efficiency and smarter decision-making.</p>
             </div>
         </>
     )
