@@ -40,12 +40,8 @@ Apply Suggestions`,
 Optionally, specify the geographical area for more targeted feedback.
 Run Evaluation:`,
         `Click the "Evaluate" button to submit your idea for analysis.
-The agent will assess the input using nine distinct insurance customer personas.
-View Feedback:`,
-        `Review the structured feedback, which includes:
-Positive aspects.
-Areas for improvement.
-Persona-specific insights.`
+The agent will assess the input using nine distinct insurance customer personas.`,
+      
     ],
     [
         `Upload ID Image: Select and upload an image of the ID document.`,
