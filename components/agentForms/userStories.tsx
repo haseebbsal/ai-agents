@@ -70,10 +70,16 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
         // console.log(recordedBlob);
         setAudios([...audios, new File([recordedBlob], "name")])
         setError(null)
-        if (currentQuestions.length != 5) {
+        if (currentQuestions.length != Number(getValues('functionality')*5)) {
             setCurrentQuestion([...currentQuestions, currentQuestions.length + 1])
         }
     }, [recordedBlob, error]);
+
+    // useEffect(()=>{
+    //     if(currentQuestions.length>1){
+    //         setCurrentQuestion([...currentQuestions, currentQuestions.length + 1])
+    //     }
+    // },[getValues('functionality')])
 
     useEffect(() => {
         if (!error) return;
@@ -96,15 +102,19 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
                     showCanvas && <VoiceVisualizer width={200} height={200} controls={recorderControls} mainBarColor="#113378" onlyRecording={true} isDefaultUIShown={true} isAudioProcessingTextShown={false} />
                 }
                 <form onSubmit={handleSubmit(agentSubmit)} className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-4 ">
+                       {!getValues('functionality') && <BaseSelect labelPlacement="outside" placeholder="Select Number Of Functionalities" control={control} name="functionality" label="How many functionalities would you like to define?" rules={{ required: "Select Number Of Functionalities" }} data={['1', '2', '3']} />} 
+                    </div>
+
                     {Error && <p className="text-red-600">{Error}</p>}
-                    {
+                    { getValues('functionality') &&
                         currentQuestions.map((e, number: number) =>
 
                             <div key={`question ${e}`} className="flex flex-col gap-4">
 
                                 <div className="flex gap-8 items-end">
                                     <div className="flex flex-col gap-4">
-                                        <p className="font-semibold">Question {number + 1}</p>
+                                        <p className="font-semibold"> Functionality {number+1<=5?"1":number+1<=10?"2":"3"} Question {number + 1}</p>
                                         <audio controls>
                                             <source src={`/audios/question_${e}.wav`} type="audio/wav" />
                                             Your browser does not support the audio element.
@@ -126,10 +136,6 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
                             </div>
                         )
                     }
-
-                    <div className="flex flex-col gap-4 ">
-                        <BaseSelect labelPlacement="outside" placeholder="Select Number Of Functionalities" control={control} name="functionality" label="How many functionalities would you like to define?" rules={{ required: "Select Number Of Functionalities" }} data={['1', '2', '3']} />
-                    </div>
                     <div className="flex justify-end gap-4">
                         <BaseButton isDisabled={agentMutation.isLoading} isLoading={agentMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
                     </div>
