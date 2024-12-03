@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -11,7 +12,7 @@ export default function Footer() {
                         <FaTwitter />
                         <FaFacebookSquare />
                     </div>
-                    <p className="text-center">All Rights Reserved | <span className="text-text-2">Terms of Use |</span> <span className="text-text-2">Privacy Policy</span></p>
+                    <p className="text-center">All Rights Reserved |<Link className="text-text-2" href={'/about'}> About</Link> </p>
                     <p className="text-center">Developed By | <a target="_blank" href="https://www.linkedin.com/in/muhammad-sabih-ur-rehman-507738216/" className="text-text-2">@malicksabih |</a><a target="_blank"  href="https://www.linkedin.com/in/haseeb-salman-a66159225/" className="text-text-2"> @haseebsal</a></p>
                 </div>
             </div>

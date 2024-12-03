@@ -8,6 +8,7 @@ import { useState } from "react"
 import Markdown from "react-markdown"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react"
 import { AgentFormInteface } from "@/utils/types"
+import Instructions from "../common/instructions"
 
 
 export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
@@ -83,31 +84,35 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
 
     return (
         <>
-            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4  mb-4">
-                <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
-                    <div className="flex gap-4 items-center font-semibold">
-                        <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
-                        <p className="text-text-2 font-semibold text-xl">{agentText}</p>
-                    </div>
+            <div className="flex flex-1 flex-wrap flex-col gap-4 w-full sm:p-0 p-4 ">
+                <div className="flex flex-1 flex-wrap gap-4 w-full sm:p-0 p-4">
+                    <Instructions />
+                    <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4  mb-4">
+                        <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
+                            <div className="flex gap-4 items-center font-semibold">
+                                <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
+                                <p className="text-text-2 font-semibold text-xl">{agentText}</p>
+                            </div>
+                        </div>
+                        <p className="text-text-1">{agentInfo}</p>
+                        <div className="flex flex-col gap-4">
+                            <BaseTextArea control={control} name="project_description" rules={{ required: "Enter Keywords" }} label="Enter Keywords" labelPlacement="outside" placeholder="Enter Comma Seperated Keywords" minRows={1} />
+                            <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
+                            <BaseTextArea control={control} name="customer_domain" rules={{}} label="Enter Website URL (Optional)" labelPlacement="outside" placeholder="Enter Website Url" minRows={1} />
+                        </div>
+                        <div className="flex justify-end gap-4">
+                            <BaseButton isDisabled={agentMutation.isLoading} isLoading={agentMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
+                        </div>
+                    </form>
                 </div>
-                <p className="text-text-1">{agentInfo}</p>
-                <div className="flex flex-col gap-4">
-                    <BaseTextArea control={control} name="project_description" rules={{ required: "Enter Keywords" }} label="Enter Keywords" labelPlacement="outside" placeholder="Enter Comma Seperated Keywords" minRows={1} />
-                    <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
-                    <BaseTextArea control={control} name="customer_domain" rules={{}} label="Enter Website URL (Optional)" labelPlacement="outside" placeholder="Enter Website Url" minRows={1} />
-                </div>
-                <div className="flex justify-end gap-4">
-                    <BaseButton isDisabled={agentMutation.isLoading } isLoading={agentMutation.isLoading } type="submit" extraClass="min-w-40">Go</BaseButton>
-                </div>
-                <div className="  flex flex-col gap-10">
-
+                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1">
                     {
-                        data && data?.map((e: any, number: number) => {
+                        data?.map((e: any, number: number) => {
                             if (number != 1) {
                                 return (
                                     <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                                         <div className="flex flex-col gap-4">
-                                            <div className="flex gap-4">
+                                            {/* <div className="flex gap-4">
                                                 <p className="font-semibold">Agent:</p>
                                                 <p>{number == 0 ? "Keyword Insights" : number == 1 ? "Related Keywords" : number == 3 ? "SEO Competitor" : "SEO Recommendation"}</p>
                                             </div>
@@ -116,7 +121,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                                 <p>{e.name.replaceAll('_', ' ').split(' ').map((word: any) =>
                                                     word.charAt(0).toUpperCase() + word.slice(1)
                                                 ).join(' ')}</p>
-                                            </div>
+                                            </div> */}
                                             <div className="flex flex-col gap-4">
                                                 <Markdown>{e.raw}</Markdown>
                                             </div>
@@ -126,7 +131,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                             }
                             return <div key={number} className="flex flex-col gap-4">
                                 <div className="flex flex-col gap-4">
-                                    <div className="flex gap-4">
+                                    {/* <div className="flex gap-4">
                                         <p className="font-semibold">Agent:</p>
                                         <p>{number == 1 ? "Related Keywords" : number == 3 ? "SEO Competitor" : "SEO Recommendation"}</p>
                                     </div>
@@ -135,7 +140,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                         <p>{e.name.replaceAll('_', ' ').split(' ').map((word: any) =>
                                             word.charAt(0).toUpperCase() + word.slice(1)
                                         ).join(' ')}</p>
-                                    </div>
+                                    </div> */}
                                     <div className="flex flex-col gap-2">
 
                                         <Table aria-label="Stats">
@@ -162,8 +167,9 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                         }
                         )
                     }
-                </div>
-            </form>
+                </div>}
+            </div>
+
         </>
     )
 }

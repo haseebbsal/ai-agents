@@ -1,3 +1,4 @@
+
 'use client';
 
 import { navContext } from "@/providers/nav-provider";
@@ -156,18 +157,18 @@ Obligations
 Key terms and conditions`
     ],
     [
-     `Click "Upload Document" and select the file you want to translate and analyze.`,
-`The system will automatically detect the document language and translate it to English if necessary.`,
-`The system will read and interpret the document content to identify key points and relevant information.`,
- `The system will categorize the document into a predefined insurance-related category.`,
- `View the content analysis report highlighting key points and relevant information.`
+        `Click "Upload Document" and select the file you want to translate and analyze.`,
+        `The system will automatically detect the document language and translate it to English if necessary.`,
+        `The system will read and interpret the document content to identify key points and relevant information.`,
+        `The system will categorize the document into a predefined insurance-related category.`,
+        `View the content analysis report highlighting key points and relevant information.`
     ],
     [
         `Click "Upload Document" and select the relevant file from your computer.`,
         `The system will read and categorize the document content. Review the results on the "Document Review" page.`,
         `The system will check the document against predefined rules. View the compliance report on the "Report" page.`
     ],
-    
+
     [
         `Click "Upload Document" and select the Employee Handbook or HR Policy Manual.`,
         `The system will parse and process the document, extracting key policies and information.`,
@@ -179,25 +180,22 @@ Key terms and conditions`
     ],
 ]
 
-export default function AgentLayout({ children }: { children: ReactNode }) {
+export default function Instructions() {
     const { agent, showInstructions } = useContext(navContext)
     const pathname = usePathname()
-    return (
-        <div className="flex flex-1 flex-wrap gap-4 w-full sm:p-0 p-4">
-            {
-                !pathname.includes('onboarding') && showInstructions &&
-                <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg mb-4 sm:ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 ">
-                    <p className="font-semibold text-center text-xl">Instructions</p>
-                    <ul className="flex flex-col gap-4 p-4">
-                        {instructions[Number(agent)]?.map((e: any) =>
-                            <li className="list-disc">{e}</li>
-                        )}
-                    </ul>
-                    {/* <p>{instructions[Number(agent)]}</p> */}
-                </div>
-            }
+    return (<>
 
-            {children}
-        </div>
+        {
+            !pathname.includes('onboarding') && showInstructions &&
+            <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg     mb-4 sm:ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 ">
+                <p className="font-semibold text-center text-xl">Instructions</p>
+                <ul className="flex flex-col gap-4 p-4">
+                    {instructions[Number(agent)]?.map((e: any) =>
+                        <li className="list-disc">{e}</li>
+                    )}
+                </ul>
+            </div>
+        }
+    </>
     )
 }

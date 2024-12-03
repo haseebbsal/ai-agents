@@ -1,12 +1,17 @@
 'use client'
 import BaseAgent from "@/components/common/base-agent";
 import { navContext } from "@/providers/nav-provider";
+import Link from "next/link";
 import { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import { SlOptionsVertical } from "react-icons/sl";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Pagination, Autoplay } from 'swiper/modules';
 const agentsData = [
     {
         bgColor: "bg-[#DEE2E6]",
@@ -123,7 +128,7 @@ const agentsData = [
     {
         bgColor: "bg-[#DEE2E6]",
 
-        categorization: "HR & administration ",
+        categorization: "HR & administration",
         data: [
             {
                 imgSrc: "/agents/customer.svg", agentText: "Onboarding", info: "Guides new employees through the onboarding process, providing resources and answering common questions.", agentId: '19'
@@ -137,23 +142,44 @@ export default function Agents() {
     const { showSideBar, setShowSideBar, setAgent } = useContext(navContext)
     return (
         <>
-            <div className=" flex-1 flex flex-col gap-4 p-4">
-                <div className="flex justify-between items-center">
-                    <div className="flex gap-4 items-center font-semibold">
-                        {/* <GiHamburgerMenu className="cursor-pointer" onClick={() => setShowSideBar(!showSideBar)} /> */}
-                        {/* <p>Distribution</p> */}
-                    </div>
-                    {/* <div className="flex gap-1 items-center">
-            <GoChevronLeft />
-            <GoChevronRight />
-            <SlOptionsVertical className="text-xs" />
-          </div> */}
+            <div className=" flex-1 flex flex-col gap-4 w-full p-4">
+                <div className="flex justify-center gap-4 flex-wrap items-center">
+                    {agentsData.map((e) => <Link className="p-4 rounded-lg min-w-28 flex justify-center bg-main-1 text-white" href={`#${e.categorization}`}>{e.categorization}</Link>)}
+
                 </div>
                 <div className="flex gap-4 w-full flex-col flex-wrap">
-                    {agentsData.map((e, index: number) => <div key={index} className={`flex flex-col !text-text-2 gap-4 ${e.bgColor} p-4 rounded-lg`}>
-                        <h1 className="font-semibold text-xl">{e.categorization}</h1>
-                        <div className="flex gap-4 w-full flex-wrap">
-                            {e.data.map((j) => <BaseAgent key={j.agentId} {...j} setAgent={setAgent} />)}
+                    {agentsData.map((e, index: number) => <div key={index} id={e.categorization} className={`flex flex-col  w-full !text-text-2 gap-4  p-4 rounded-lg`}>
+                        <h1 className="font-semibold text-2xl  text-center">{e.categorization}</h1>
+                        <div className="flex gap-4 w-full    flex-wrap">
+                            <Swiper
+                                className="w-full"
+                                modules={[Pagination, Autoplay]}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                pagination={{ clickable: true }}
+                                spaceBetween={0}
+                                slidesPerView={1}
+                                breakpoints={{
+                                    640: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 20,
+                                    },
+                                    768: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 100,
+                                    },
+                                    1024: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 100,
+                                    },
+                                }}
+                            //   onSlideChange={() => console.log('slide change')}
+                            //   onSwiper={(swiper) => console.log(swiper)}
+                            >
+                                {e.data.map((j) => <SwiperSlide className="h-full" key={j.agentId}><BaseAgent  {...j} setAgent={setAgent} /></SwiperSlide>)}
+                            </Swiper>
                         </div>
                     </div>)}
                 </div>

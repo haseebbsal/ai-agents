@@ -26,7 +26,8 @@
     "react-markdown": "^9.0.1",
     "react-query": "^3.39.3",
     "react-toastify": "^10.0.6",
-    "react-voice-visualizer": "^2.0.4"
+    "react-voice-visualizer": "^2.0.4",
+    "swiper": "^11.1.15"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

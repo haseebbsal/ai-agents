@@ -13,6 +13,7 @@ import { FaRobot } from "react-icons/fa";
 import { AgentFormInteface } from "@/utils/types"
 import { FaRocketchat } from "react-icons/fa";
 import { navContext } from "@/providers/nav-provider"
+import Instructions from "../common/instructions"
 
 export default function ChatForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const chatRef = useRef<any>()
@@ -124,28 +125,35 @@ export default function ChatForm({ imgSrc, agentInfo, agentText, agent }: AgentF
 
     return (
         <>
-            {!chatFile && <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4 mb-4">
-                <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
-                    <div className="flex gap-4 items-center font-semibold">
-                        <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
-                        <p className="text-text-2 font-semibold text-xl">{agentText}</p>
-                    </div>
-                </div>
-                <p className="text-text-1">{agentInfo}</p>
-                <div className="flex flex-col gap-4">
-                    <BaseFile accept=".pdf" headerText="Upload Pdf" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
-                </div>
-                <div className="flex justify-end gap-4">
-                    <BaseButton isDisabled={startChatMutation.isLoading} isLoading={startChatMutation.isLoading} type="submit" extraClass="min-w-40">Start Chat</BaseButton>
-                </div>
-                {/* <div className=" overflow-auto max-h-[40rem]">
+            {!chatFile &&
+                <div className="flex flex-1 flex-wrap flex-col gap-4 w-full sm:p-0 p-4 ">
+                    <div className="flex flex-1 flex-wrap gap-4 w-full sm:p-0 p-4">
+                        <Instructions />
+                        <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4 mb-4">
+                            <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
+                                <div className="flex gap-4 items-center font-semibold">
+                                    <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
+                                    <p className="text-text-2 font-semibold text-xl">{agentText}</p>
+                                </div>
+                            </div>
+                            <p className="text-text-1">{agentInfo}</p>
+                            <div className="flex flex-col gap-4">
+                                <BaseFile accept=".pdf" headerText="Upload Pdf" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                            </div>
+                            <div className="flex justify-end gap-4">
+                                <BaseButton isDisabled={startChatMutation.isLoading} isLoading={startChatMutation.isLoading} type="submit" extraClass="min-w-40">Start Chat</BaseButton>
+                            </div>
+                            {/* <div className=" overflow-auto max-h-[40rem]">
                     {
                         startChatMutation.data?.data && <Markdown>{startChatMutation.data.data.result.raw}</Markdown>
                     }
                 </div> */}
-            </form>}
-
-            {chatFile && <div className="flex-1  flex flex-col gap-4 p-4 border-2 h-[80vh]  rounded-lg border-main-2  mt-4  mb-4">
+                        </form>
+                    </div>
+                </div>
+            }
+    
+            {chatFile && <div className="flex-1  flex flex-col gap-4 p-4 border-2 h-[80vh]  rounded-lg border-main-2  mt-4  ml-4 mr-4 mb-4">
                 <div ref={chatRef} className="flex flex-col gap-4 flex-1  overflow-auto">
                     {chatList.length == 0 && <p className="m-auto font-semibold flex gap-2 items-center text-sm"><FaRocketchat className="text-main-1" /> Spark a conversation ! <FaRocketchat className="text-main-1" /></p>}
                     {chatList?.map((e: any, index: number) =>

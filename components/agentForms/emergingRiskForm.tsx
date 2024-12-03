@@ -7,6 +7,7 @@ import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
 import { AgentFormInteface } from "@/utils/types"
+import Instructions from "../common/instructions"
 
 
 export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
@@ -18,7 +19,7 @@ export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }
             setData(data.data.result.tasks_output)
         },
     })
-    
+
     function agentSubmit(e: FieldValues) {
         Object.entries(e).forEach((f) => {
             if (!f[1]) {
@@ -60,30 +61,34 @@ export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }
 
     return (
         <>
-            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4 mb-4">
-                <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
-                    <div className="flex gap-4 items-center font-semibold">
-                        <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
-                        <p className="text-text-2 font-semibold text-xl">{agentText}</p>
-                    </div>
+            <div className="flex flex-1 flex-wrap flex-col gap-4 w-full sm:p-0 p-4 ">
+                <div className="flex flex-1 flex-wrap gap-4 w-full sm:p-0 p-4">
+                    <Instructions />
+                    <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2  mt-4 sm:mr-4 mb-4">
+                        <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
+                            <div className="flex gap-4 items-center font-semibold">
+                                <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
+                                <p className="text-text-2 font-semibold text-xl">{agentText}</p>
+                            </div>
+                        </div>
+                        <p className="text-text-1">{agentInfo}</p>
+                        <div className="flex flex-col gap-4">
+                            {/* <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " /> */}
+                            <BaseTextArea minRows={1} control={control} name="area" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
+                            <BaseTextArea minRows={1} control={control} name="product_lines" rules={{ required: "Enter Product Lines" }} label="Product Lines" labelPlacement="outside" placeholder="Enter Relevant Insurance Product Lines For Emerging Risk Analysis Separated By Comma." />
+                        </div>
+                        <div className="flex justify-end gap-4">
+                            <BaseButton isDisabled={agentMutation.isLoading} isLoading={agentMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
+                        </div>
+                    </form>
                 </div>
-                <p className="text-text-1">{agentInfo}</p>
-                <div className="flex flex-col gap-4">
-                    {/* <BaseTextArea minRows={1} control={control} name="customer_domain" rules={{ required: "Enter Customer Domain" }} label="Customer Domain" labelPlacement="outside" placeholder="e.g., https://www.jubileelife.com/ " /> */}
-                    <BaseTextArea minRows={1} control={control} name="area" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
-                    <BaseTextArea minRows={1} control={control} name="product_lines" rules={{ required: "Enter Product Lines" }} label="Product Lines" labelPlacement="outside" placeholder="Enter Relevant Insurance Product Lines For Emerging Risk Analysis Separated By Comma." />
-                </div>
-                <div className="flex justify-end gap-4">
-                    <BaseButton isDisabled={agentMutation.isLoading } isLoading={agentMutation.isLoading } type="submit" extraClass="min-w-40">Go</BaseButton>
-                </div>
-                <div className="  flex flex-col gap-10">
-
+                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1">
                     {
                         data?.map((e: any, number: number) =>
                         (
                             <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                                 <div className="flex flex-col gap-4">
-                                    <div className="flex gap-4">
+                                    {/* <div className="flex gap-4">
                                         <p className="font-semibold">Agent:</p>
                                         <p>{e.agent}</p>
                                     </div>
@@ -92,7 +97,7 @@ export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }
                                         <p>{e.name.replaceAll('_', ' ').split(' ').map((word: any) =>
                                             word.charAt(0).toUpperCase() + word.slice(1)
                                         ).join(' ')}</p>
-                                    </div>
+                                    </div> */}
                                     <div className="flex flex-col gap-4">
                                         <Markdown>{e.raw}</Markdown>
                                     </div>
@@ -101,8 +106,9 @@ export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }
                         )
                         )
                     }
-                </div>
-            </form>
+                </div>}
+            </div>
+
         </>
     )
 }

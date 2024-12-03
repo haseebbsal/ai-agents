@@ -6,29 +6,28 @@ import { BaseAgentProps } from "@/utils/types";
 import { useRouter } from "next/navigation";
 
 
-export default function BaseAgent({ agentText, info, imgSrc ,setAgent,agentId}: BaseAgentProps) {
-    const router=useRouter()
-    const navigate=()=>{
+export default function BaseAgent({ agentText, info, imgSrc, setAgent, agentId }: BaseAgentProps) {
+    const router = useRouter()
+    const navigate = () => {
         setAgent(agentId)
         router.push('/agent')
     }
 
     return (
         <>
-            <div className="p-4 flex flex-col gap-[1.5rem] flex-[1_0_20%]   min-h-44 border-2 rounded-lg border-main-2">
-                <div className="flex justify-between items-center">
-                    <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
-                    {/* <SlOptions /> */}
+            <div className=" h-full flex flex-col  min-h-44 border-2 rounded-lg border-main-2">
+                <div style={{backgroundImage:"linear-gradient(to right,blue,pink)"}} className="flex justify-between items-center rounded-tl-lg rounded-tr-lg  min-h-20 relative">
+                    <div className="absolute w-full top-1/2  flex justify-center z-10">
+                        <Image className="bg-white p-4 object-contain h-[5rem] w-[5rem] border-2 rounded-full border-main-1" src={imgSrc} alt="agent Icon" width={50} height={50} />
+                    </div>
                 </div>
-                <div className="flex flex-col gap-2 border-b-2 border-main-2 pb-4">
-                    <p className="text-text-2 text-xl font-semibold">{agentText}</p>
-                    {/* <div className="flex gap-4">
-                        <p className="bg-backgroundColors-2 p-2 rounded-lg"><span className="text-text-2">{credit}</span> / Execution</p>
-                        <p className="bg-backgroundColors-2 p-2 rounded-lg"><span className="text-text-2">{execution}</span> Executions</p>
-                    </div> */}
+                <div className="p-4 flex flex-col mt-[3rem] gap-[1.5rem] flex-1">
+                    <div className="flex flex-col gap-2 border-b-2 border-main-2 pb-4">
+                        <p className="text-text-2 text-xl text-center font-semibold">{agentText}</p>
+                    </div>
+                    <p className="text-text-1">{info}</p>
+                    <BaseButton extraClass="sm:w-[10rem] mx-auto w-full " onClick={navigate} style={{ marginTop: "auto" }}>Use Agent</BaseButton>
                 </div>
-                <p className="text-text-1">{info}</p>
-                <BaseButton extraClass="sm:w-[10rem] mx-auto w-full " onClick={navigate} style={{ marginTop: "auto" }}>Hire</BaseButton>
             </div>
         </>
     )

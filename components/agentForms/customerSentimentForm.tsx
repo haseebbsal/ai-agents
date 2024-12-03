@@ -7,6 +7,7 @@ import { useMutation } from "react-query"
 import { useState } from "react"
 import Markdown from "react-markdown"
 import { AgentFormInteface } from "@/utils/types"
+import Instructions from "../common/instructions"
 
 export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
@@ -59,30 +60,35 @@ export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, ag
 
     return (
         <>
-            <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2 w-full  mt-4 sm:mr-4 mb-4">
-                <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
-                    <div className="flex gap-4 items-center font-semibold">
-                        <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
-                        <p className="text-text-2 font-semibold text-xl">{agentText}</p>
-                    </div>
-                </div>
-                <p className="text-text-1">{agentInfo}</p>
-                <div className="flex flex-col gap-4">
-                    <BaseTextArea minRows={1} control={control} name="company_name" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
-                    <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
-                    <BaseTextArea minRows={1} control={control} name="company_variations" rules={{}} label="Company Variations (optional)" labelPlacement="outside" placeholder="Enter Comma Seperated Company Variations e.g.( Life Insurance Corporation of India, Jubilee Life Insurance Company Limited)" />
-                </div>
-                <div className="flex justify-end gap-4">
-                    <BaseButton isDisabled={agentMutation.isLoading } isLoading={agentMutation.isLoading } type="submit" extraClass="min-w-40">Go</BaseButton>
-                </div>
-                <div className="  flex flex-col gap-10">
+            <div className="flex flex-1 flex-wrap flex-col gap-4 w-full sm:p-0 p-4 ">
+                <div className="flex flex-1 flex-wrap gap-4 w-full sm:p-0 p-4">
+                    <Instructions />
+                    <form onSubmit={handleSubmit(agentSubmit)} className=" flex-1  flex flex-col gap-4 p-4 border-2 rounded-lg border-main-2 w-full  mt-4 sm:mr-4 mb-4">
+                        <div className="flex justify-between items-center pb-8 border-b-2 border-main-2">
+                            <div className="flex gap-4 items-center font-semibold">
+                                <Image src={imgSrc} alt="agent Icon" width={35} height={35} />
+                                <p className="text-text-2 font-semibold text-xl">{agentText}</p>
+                            </div>
+                        </div>
+                        <p className="text-text-1">{agentInfo}</p>
+                        <div className="flex flex-col gap-4">
+                            <BaseTextArea minRows={1} control={control} name="company_name" rules={{ required: "Enter Target Insurance Company" }} label="Specify Target Insurance Company" labelPlacement="outside" placeholder="Enter Domain " />
+                            <BaseTextArea minRows={1} control={control} name="geographical_location" rules={{ required: "Enter Geographical Location" }} label="Geographical Location" labelPlacement="outside" placeholder="Enter Geographical Location (e.g. Asia)" />
+                            <BaseTextArea minRows={1} control={control} name="company_variations" rules={{}} label="Company Variations (optional)" labelPlacement="outside" placeholder="Enter Comma Seperated Company Variations e.g.( Life Insurance Corporation of India, Jubilee Life Insurance Company Limited)" />
+                        </div>
+                        <div className="flex justify-end gap-4">
+                            <BaseButton isDisabled={agentMutation.isLoading} isLoading={agentMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
+                        </div>
 
+                    </form>
+                </div>
+                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1">
                     {
                         data?.map((e: any, number: number) =>
                         (
                             <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                                 <div className="flex flex-col gap-4">
-                                    <div className="flex gap-4">
+                                    {/* <div className="flex gap-4">
                                         <p className="font-semibold">Agent:</p>
                                         <p>{number == 0 ? "Search Agent" : number == 1 ? "Scraping Agent" : number == 3 ? "Sentiment Analysis Agent" : "Report Generation"}</p>
                                     </div>
@@ -91,7 +97,7 @@ export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, ag
                                         <p>{e.name.replaceAll('_', ' ').split(' ').map((word: any) =>
                                             word.charAt(0).toUpperCase() + word.slice(1)
                                         ).join(' ')}</p>
-                                    </div>
+                                    </div> */}
                                     <div className="flex flex-col gap-4">
                                         <Markdown>{e.raw}</Markdown>
                                     </div>
@@ -100,8 +106,9 @@ export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, ag
                         )
                         )
                     }
-                </div>
-            </form>
+                </div>}
+            </div>
+
         </>
     )
 }
