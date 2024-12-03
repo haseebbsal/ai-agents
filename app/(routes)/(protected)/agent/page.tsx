@@ -47,7 +47,7 @@ const agents = [
         imgSrc: "/agents/chat.svg", agentText: "Chatbot", info: "Engages with potential clients in real time on digital platforms, answering product questions and qualifying leads before handing them to a human agent."
     },
     {
-        imgSrc: "/agents/risk.svg", agentText: "Emerging Risk Identification", info: "Provided an overview of emerging risks within a specific insurance product area."
+        imgSrc: "/agents/risk.svg", agentText: "Emerging Risk Identification", info: "“Provides an overview of emergent risks within a specific insurance product area and in a specific part of the world."
     }
     ,
     {

@@ -14,7 +14,7 @@ const agentsData = [
         categorization: "Underwriting",
         data: [
             {
-                imgSrc: "/agents/risk.svg", agentText: "Emerging Risk Identification", info: "Provided an overview of emerging risks within a specific insurance product area.", agentId: '7'
+                imgSrc: "/agents/risk.svg", agentText: "Emerging Risk Identification", info: "“Provides an overview of emergent risks within a specific insurance product area and in a specific part of the world.", agentId: '7'
             },
             {
                 imgSrc: "/agents/customer.svg", agentText: "Consumer Digital Twin", info: "Compares products and marketing ideas against insurance customer personas.", agentId: '3'
