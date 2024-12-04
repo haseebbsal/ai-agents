@@ -99,7 +99,7 @@ export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }
                                         ).join(' ')}</p>
                                     </div> */}
                                     <div className="flex flex-col gap-4">
-                                        <Markdown>{e.raw}</Markdown>
+                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','')}}></div>
                                     </div>
                                 </div>
                             </div>

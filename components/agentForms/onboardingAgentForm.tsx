@@ -50,7 +50,7 @@ export default function OnboardingAgentForm({ imgSrc, agentInfo, agentText, agen
                         <p className="text-text-1">{agentInfo}</p>
                         <div className="flex flex-col gap-4">
                             <BaseFile accept=".pdf" headerText="Upload Pdf Document" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
-                            {link && <BaseButton extraClass="w-max" onClick={copyLink}>Copy Shareable Link</BaseButton>}
+                            {link && <div className="flex flex-wrap gap-4 items-center"><p>This is the link to a personalized chatbot for HR policies</p> <BaseButton extraClass="w-max" onClick={copyLink}>Copy Shareable Link</BaseButton></div>}
                         </div>
                         <div className="flex justify-end gap-4">
                             <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>

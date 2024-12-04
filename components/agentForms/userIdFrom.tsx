@@ -8,6 +8,94 @@ import BaseFile from "../form/base-file"
 import { AgentFormInteface } from "@/utils/types"
 import Instructions from "../common/instructions"
 
+const penis = `html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emerging Risks Report</title>
+<style>
+    body {font-family: Arial, sans-serif; margin: 20px;}
+    h1, h2, h3 {color: #333;}
+    ul {list-style-type: none; padding: 0;}
+    li {margin-bottom: 10px;}
+    a {color: #1E90FF; text-decoration: none;}
+    a:hover {text-decoration: underline;}
+</style>
+</head>
+<body>
+<h1>Emerging Risks Report</h1>
+ 
+<h2>Health Product Line</h2>
+<h3>Identified Risks</h3>
+<ul>
+<li>Infrastructure constraints</li>
+<li>Technological risks</li>
+<li>Chronic health issues</li>
+</ul>
+ 
+<h3>Emerging Trends and Incidents</h3>
+<ul>
+<li>
+        Overcrowded facilities, declining physician-population ratios, limited medicine availability - <a href="https://www.iqvia.com/locations/asia-pacific/library/white-papers/healthcare-in-asia-2023-sustaining-the-step-change" target="_blank">Source</a>
+</li>
+<li>
+        Cyber attacks or data breaches pose significant risks to healthcare organizations - <a href="https://www.aon.com/en/insights/reports/global-risk-management-survey/top-risks-facing-healthcare-organizations" target="_blank">Source</a>
+</li>
+<li>
+        Rising prevalence of chronic diseases and mental health issues - <a href="https://www.riskleadershipnetwork.com/insights/top-10-emerging-risks-of-2023" target="_blank">Source</a>
+</li>
+<li>
+        Climate change impacts threaten health infrastructure, especially in island states - <a href="https://www3.weforum.org/docs/WEF_PHSSR_CAPRI_Asia_Pacific_2024.pdf" target="_blank">Source</a>
+</li>
+<li>
+        Increased healthcare demand pressures governments to enhance investment - <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9986597/" target="_blank">Source</a>
+</li>
+</ul>
+ 
+<h2>Loan Product Line</h2>
+<h3>Identified Risks</h3>
+<ul>
+<li>Economic slowdown</li>
+<li>Liquidity risks</li>
+<li>Technological vulnerabilities</li>
+</ul>
+ 
+<h3>Emerging Trends and Incidents</h3>
+<ul>
+<li>
+        Economic slowdown, rising inflation create financial instability - <a href="https://www.spglobal.com/ratings/en/research/pdf-articles/221115-asia-pacific-financial-institutions-credit-outlook-2023-downside-risks-endure-101569124" target="_blank">Source</a>
+</li>
+<li>
+        Liquidity risks in the non-banking sector increase with project finance loans - <a href="https://www2.deloitte.com/content/dam/Deloitte/sg/Documents/finance/sea-fa-deleveraging-asia-q2-2023.pdf" target="_blank">Source</a>
+</li>
+<li>
+        Cyber risks and AI misuse in financial services - <a href="https://www.aon.com/en/insights/reports/global-risk-management-survey/top-risks-facing-financial-institutions" target="_blank">Source</a>
+</li>
+<li>
+        Potential default spikes from property sector loans under liquidity stress - <a href="https://www.spglobal.com/_assets/documents/ratings/research/101599997.pdf" target="_blank">Source</a>
+</li>
+<li>
+        Systemic risks from the rapid growth of the private credit sector - <a href="https://www.hkma.gov.hk/media/eng/publication-and-research/research/research-memorandums/2024/RM05-2024.pdf" target="_blank">Source</a>
+</li>
+</ul>
+ 
+<h2>Summary Section</h2>
+<h3>Key Recurring Risks Across Product Lines</h3>
+<ul>
+<li>Technological vulnerabilities, including cyber risks affecting both healthcare and financial services.</li>
+</ul>
+ 
+<h3>Significant Risks Specific to the Specified Area and Product Lines</h3>
+<ul>
+<li>Healthcare: Increasing pressure on infrastructure and workforce due to overcrowding and rising chronic diseases as well as data breach threats.</li>
+<li>Loan: Economic downturns and liquidity difficulties that are potentially exacerbated by fluctuations in the property sector and private credit expansions.</li>
+</ul>
+</body>
+</html>
+`
+
 
 export default function UserIdForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
@@ -79,46 +167,10 @@ export default function UserIdForm({ imgSrc, agentInfo, agentText, agent }: Agen
                         </div>
                     </form>
                 </div>
-                {/* <Markdown>
-                    **Health Product Line:**
-
-                    - **Identified Risks:**
-                    - *Predefined Risks:*
-                    - Infectious diseases
-                    - Chronic diseases
-                    - Mental health issues
-                    - Environmental pollution
-
-                    - *Emerging Trends or Incidents:*
-                    - **Emerging infectious diseases:** Southeast Asia is facing new and drug-resistant diseases such as malaria. [Source](https://www.usaid.gov/asia-regional/global-health)
-                    - **Noncommunicable diseases:** There's an increase in cardiovascular diseases, cancer, diabetes, and obesity. [Source](https://www.who.int/southeastasia/health-topics/noncommunicable-diseases)
-                    - **Climate change impacts:** Extreme weather events such as floods and storms are impacting health. [Source](https://wmo.int/news/media-centre/climate-change-and-extreme-weather-impacts-hit-asia-hard)
-                    - **Zoonotic viral diseases:** These diseases are emerging and resurging in Southeast Asia, driven by environmental and human factors. [Source](https://pmc.ncbi.nlm.nih.gov/articles/PMC10298164/)
-
-                    **Loan Product Line:**
-
-                    - **Identified Risks:**
-                    - *Predefined Risks:*
-                    - Credit risk
-                    - Interest rate risk
-                    - Liquidity risk
-                    - Regulatory risk
-
-                    - *Emerging Trends or Incidents:*
-                    - **Economic slowdown and inflation:** These factors are increasing the credit risk in the Asia-Pacific financial sector. [Source](https://www.spglobal.com/ratings/en/research/pdf-articles/221115-asia-pacific-financial-institutions-credit-outlook-2023-downside-risks-endure-101569124)
-                    - **Technological innovation:** The integration of decentralized finance with traditional finance increases risks. [Source](https://www.fsb.org/2024/10/fsb-asia-group-discusses-technological-innovation-emerging-risks-and-resolution-regimes/)
-                    - **Regulatory pressure:** Banks are facing increased pressure to manage risk within stringent regulatory frameworks. [Source](https://www2.deloitte.com/content/dam/Deloitte/sg/Documents/finance/sea-fa-deleveraging-asia-q2-2023.pdf)
-                    - **Geopolitical tensions:** Emerging frictions are due to a shift towards a multipolar geopolitical order. [Source](https://www2.deloitte.com/content/dam/Deloitte/jp/Documents/financial-services/bk/acrs-2023-regulatory-outlook-.pdf)
-
-                    ---
-
-                    **Key Risks Summary:**
-
-                    - Across all product lines, the most critical risks involve **emerging health threats** such as new and drug-resistant diseases, and **economic threats**, including inflation and geopolitical tensions within the financial sector.
-
-                    - Specific to Southeast Asia, the **emergence of infectious and zoonotic diseases** poses significant health risks, while the **Asia-Pacific financial sector is vulnerable due to economic slowdown and regulatory pressures.**
-
-                    This report provides an actionable overview of the critical risks currently affecting each product line, emphasizing the necessity for strategic planning and risk management in response to these identified challenges.
+                {/* <code dangerouslySetInnerHTML={{__html:penis}}>
+                </code> */}
+                {/* <Markdown >
+                    {penis}
                 </Markdown> */}
                 {agentFileMutation.data?.data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex-1">
 
