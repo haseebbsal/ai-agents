@@ -186,8 +186,8 @@ export default function Instructions() {
             <div className="p-4 flex flex-col gap-4 mt-4 border-2 rounded-lg     mb-4 sm:ml-4 sm:flex-[0.35_0_0] flex-1 sm:mr-0 ">
                 <p className="font-semibold text-center text-xl">Instructions</p>
                 <ul className="flex flex-col gap-4 p-4">
-                    {instructions[Number(agent)]?.map((e: any) =>
-                        <li className="list-disc">{e}</li>
+                    {instructions[Number(agent)]?.map((e: any,number:number) =>
+                        <li key={number} className="list-disc">{e}</li>
                     )}
                 </ul>
             </div>
