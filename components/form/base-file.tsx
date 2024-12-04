@@ -15,8 +15,8 @@ export default function BaseFile({ showHeader, extraClass, headerText, name, con
             <div className="flex flex-col gap-2">
                 {showHeader && <h1 className="text-base-primary font-semibold">{headerText}</h1>}
                 {error && <p className="text-red-400 text-sm">{error.message}</p>}
-                <div className={`p-4 border-2 border-base-default rounded-lg ${extraClass}`}>
-                    <div className="bg-content-14 flex items-center justify-center flex-col relative rounded-lg min-h-36 gap-2">
+                <div className={`p-4 ${extraClass}`}>
+                    <div className="bg-content-14 flex flex-col relative rounded-lg  gap-2">
                         {/* <h1 className="">Drag your file here</h1> */}
                         <BaseLabel htmlFor={name} text="Browse Files" />
                         <input multiple={multiple} accept={accept} className="absolute opacity-0 z-0 " {...field} onChange={(e) => {
