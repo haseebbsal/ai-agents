@@ -72,8 +72,9 @@ export default function CompetitorAnalysisForm({ imgSrc, agentInfo, agentText, a
                         </div>
                         <p className="text-text-1">{agentInfo}</p>
                         <div className="flex flex-col gap-2">
-                            <BaseTextArea minRows={1} control={control} name="competitor1" rules={{ required: "Enter Description" }} label="Enter Competitor Domain 1" labelPlacement="outside" placeholder="Enter Domain " />
-                            <BaseTextArea minRows={1} control={control} name="competitor2" rules={{}} label="Enter Competitor Domain 2 (optional)" labelPlacement="outside" placeholder="Enter Domain " />
+                            <BaseTextArea minRows={1} control={control} name="competitor1" rules={{ required: "Enter Description" }} label="Competitor Domain 1" labelPlacement="outside" placeholder="Enter Domain " />
+                            <BaseTextArea minRows={1} control={control} name="competitor2" rules={{}} label="Competitor Domain 2 (optional)" labelPlacement="outside" placeholder="Enter Domain " />
+                            <BaseTextArea minRows={1} control={control} name="area" rules={{required:'Enter Area'}} label="Area" labelPlacement="outside" placeholder="Enter Area " />
                         </div>
                         <div className="flex justify-end gap-4">
                             <BaseButton isDisabled={agentMutation.isLoading} isLoading={agentMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>

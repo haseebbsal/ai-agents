@@ -20,6 +20,18 @@ const questions = [
     '/audios/question_5.wav'
 ]
 
+
+const questionsText=[
+    `Who will use this functionality?`,
+    `What specific task or functionality does the user want to perform?`,
+    `Why does the user need this functionality?`,
+    `When or under what conditions will this user use this functionality?`,
+    `How important is this functionality for the user?`
+]
+
+
+
+
 export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()
@@ -40,7 +52,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
 
     function agentSubmit(e: FieldValues) {
         console.log('audios', audios)
-        if (audios.length != Number(getValues('functionality')) * 5) {
+        if (audios.length != 5) {
             setError("You Must Answer All Question Audios")
             return
         }
@@ -49,7 +61,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
         audios.forEach((e: any) => {
             formData.append('files', e)
         })
-        formData.append('functionality', e.functionality)
+        formData.append('functionality', '1')
         console.log([...formData.entries()])
         agentMutation.mutate(formData)
     }
@@ -72,7 +84,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
         // console.log(recordedBlob);
         setAudios([...audios, new File([recordedBlob], "name")])
         setError(null)
-        if (currentQuestions.length != Number(getValues('functionality')) * 5) {
+        if (currentQuestions.length !=  5) {
             setCurrentQuestion([...currentQuestions, currentQuestions.length + 1])
         }
     }, [recordedBlob, error]);
@@ -108,25 +120,26 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
                             showCanvas && <VoiceVisualizer width={200} height={200} controls={recorderControls} mainBarColor="#113378" onlyRecording={true} isDefaultUIShown={true} isAudioProcessingTextShown={false} />
                         }
                         <form onSubmit={handleSubmit(agentSubmit)} className="flex flex-col gap-8 w-full">
-                            <div className="flex flex-col gap-4 ">
+                            {/* <div className="flex flex-col gap-4 ">
                                 {!getValues('functionality') && <BaseSelect labelPlacement="outside" placeholder="Select Number Of Functionalities" control={control} name="functionality" label="How many functionalities would you like to define?" rules={{ required: "Select Number Of Functionalities" }} data={['1', '2', '3']} />}
-                            </div>
+                            </div> */}
 
                             {Error && <p className="text-red-600">{Error}</p>}
-                            {getValues('functionality') &&
+                            {
                                 currentQuestions.map((e, number: number) =>
 
                                     <div key={`question ${e}`} className="flex flex-col gap-4">
 
-                                        <div className="flex gap-8 items-end flex-wrap">
+                                        <div className="flex gap-8 items-center flex-wrap">
                                             <div className="flex flex-col gap-4">
-                                                <p className="font-semibold"> Functionality {number + 1 <= 5 ? "1" : number + 1 <= 10 ? "2" : "3"} Question {number + 1 <= 5 ? number + 1 : number + 1 <= 10 ? e - 5 : e - 10}</p>
-                                                <audio controls>
+                                                <p className="font-semibold"> Question {number + 1 <= 5 ? number + 1 : number + 1 <= 10 ? e - 5 : e - 10}: {questionsText[e-1]}</p>
+                                                
+                                                {/* <audio controls>
                                                     <source src={`/audios/question_${e}.wav`} type="audio/wav" />
                                                     Your browser does not support the audio element.
-                                                </audio>
+                                                </audio> */}
                                             </div>
-                                            {!audios[number] && <BaseButton extraClass="p-6" onClick={() => setShowCanvas(!showCanvas)}>Answer Question</BaseButton>}
+                                            {!audios[number] && <BaseButton extraClass="" onClick={() => setShowCanvas(!showCanvas)}>Answer Question</BaseButton>}
                                             {
                                                 audios[number] && <div className="flex flex-col gap-4">
                                                     <p className="font-semibold"> Response</p>

@@ -59,18 +59,8 @@ const agentsData = [
   },
   {
     bgColor: "bg-[#DEE2E6]",
-    categorization: "Policy administration",
-    data: [
-      {
-        imgSrc: "/agents/policy.svg", agentText: "Document Processing", info: "Extracts and processes policyholder information from digital documents, reducing administrative workload.", agentId: '17'
-      },
 
-    ]
-  },
-  {
-    bgColor: "bg-[#DEE2E6]",
-
-    categorization: "Customer service",
+    categorization: "Customer Service and Policy Administration",
     data: [
       {
         imgSrc: "/agents/policy.svg", agentText: "Virtual Assistant", info: "Provides 24/7 support to customer service agents, answering policy-related queries and guiding customers through self-service options (based on uploaded insurance policy or claims process).", agentId: '14'
@@ -91,6 +81,9 @@ const agentsData = [
       {
         imgSrc: "/agents/policy.svg", agentText: "Claims Processing", info: "Compares a claim document against a series of preset rules.", agentId: '18'
       },
+      {
+        imgSrc: "/agents/policy.svg", agentText: "Document Processing", info: "Extracts and processes policyholder information from digital documents, reducing administrative workload.", agentId: '17'
+      },
     ]
   },
   {
@@ -106,37 +99,22 @@ const agentsData = [
   {
     bgColor: "bg-[#DEE2E6]",
 
-    categorization: "Finance",
+    categorization: "Finance, Admin, Compliance",
     data: [
       {
         imgSrc: "/agents/consumer.svg", agentText: "Contract Summarizer", info: "Summarizes key points from an uploaded contract.", agentId: '16'
       },
       {
         imgSrc: "/agents/marketing.svg", agentText: "Automated Budget", info: "Assists finance teams in preparing budgets by analyzing past financial data and projecting future trends.", agentId: '13'
-      }
-    ]
-  },
-  {
-    bgColor: "bg-[#DEE2E6]",
-
-    categorization: "IT",
-    data: [
+      },
       {
         imgSrc: "/agents/sentiment.svg", agentText: "User Story", info: "Writes user stories for agile software development requirements. Interviews the user and returns a software development requirements document.", agentId: '15'
       },
-    ]
-  },
-  {
-    bgColor: "bg-[#DEE2E6]",
-
-    categorization: "HR & administration",
-    data: [
       {
         imgSrc: "/agents/customer.svg", agentText: "Onboarding", info: "Guides new employees through the onboarding process, providing resources and answering common questions.", agentId: '19'
       },
     ]
   }
-
 ]
 
 
