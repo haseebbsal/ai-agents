@@ -164,7 +164,7 @@ export default function Home() {
         </div>
         <div className=" flex-1 flex flex-col gap-4 w-full p-4">
           <div className="flex justify-center gap-4 flex-wrap items-center">
-            {agentsData.map((e) => <Link className="p-4 rounded-lg min-w-28 flex justify-center bg-main-1 text-white" href={`#${e.categorization}`}>{e.categorization}</Link>)}
+            {agentsData.map((e) => <Link className="p-4 rounded-lg min-w-28 sm:w-auto w-full flex justify-center bg-main-1 text-white" href={`#${e.categorization}`}>{e.categorization}</Link>)}
 
           </div>
           <div className="flex gap-4 w-full flex-col flex-wrap">
