@@ -7,20 +7,11 @@ import { ReactNode, useContext } from "react";
 
 const instructions = [
     [
-        `Enter the website URL or product/service keywords for which you want to optimize SEO.
-Optionally, input the geographical location to tailor the analysis to a specific region.
-Initiate SEO Analysis`,
-        `Click the Analyze button to start the SEO analysis.
-View Keyword Insights and Trends`,
-        `Click the Analyze button to start the SEO analysis.
-View Keyword Insights and Trends`,
-        `The agent will analyze relevant keywords, SEO trends, and popular search terms in the insurance industry.
-Insights will reflect insurance-specific jargon and current market demands.
-Review Competitor Analysis`,
-        `View the company's competitive SEO standing and comparisons with other companies for the same keywords.
-Receive Recommendations`,
-        `Get actionable recommendations for keyword usage and SEO improvements tailored to your website or campaign goals.
-Apply Suggestions`,
+        `Enter the website URL or product/service keywords for which you want to optimize SEO.`,
+        `Click the Analyze button to start the SEO analysis.`,
+        `The agent will analyze relevant keywords, SEO trends, and popular search terms in the insurance industry.`,
+        `View the company's competitive SEO standing and comparisons with other companies for the same keywords.`,
+        `Get actionable recommendations for keyword usage and SEO improvements tailored to your website or campaign goals.`,
         `Use the recommendations to refine your SEO strategy, improve keyword usage, or enhance campaign targeting.`
     ]
     ,
@@ -47,7 +38,6 @@ The agent will assess the input using nine distinct insurance customer personas.
         `Upload ID Image: Select and upload an image of the ID document.`,
         `Process Image: The agent will automatically process the uploaded image and extract key fields.`,
         `View Extracted Data: Review the structured output showing the extracted fields (e.g., Name, Date of Birth, ID Number).`,
-        `Download/Copy Data: Save or copy the extracted data for further use.`,
         `Retry if Needed: If any errors occur, re-upload the image or contact support`
     ],
     [
