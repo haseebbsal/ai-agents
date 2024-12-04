@@ -150,7 +150,7 @@ export default function Agents() {
                 <div className="flex gap-4 w-full flex-col flex-wrap">
                     {agentsData.map((e, index: number) => <div key={index} id={e.categorization} className={`flex flex-col  w-full !text-text-2 gap-4  p-4 rounded-lg`}>
                         <h1 className="font-semibold text-2xl  text-center">{e.categorization}</h1>
-                        <div className="flex gap-4 w-full    flex-wrap">
+                        <div className=" gap-4 w-full flex sm:!hidden   flex-wrap">
                             <Swiper
                                 className="w-full"
                                 modules={[Pagination, Autoplay]}
@@ -180,6 +180,9 @@ export default function Agents() {
                             >
                                 {e.data.map((j) => <SwiperSlide className="h-full" key={j.agentId}><BaseAgent  {...j} setAgent={setAgent} /></SwiperSlide>)}
                             </Swiper>
+                        </div>
+                        <div className=" gap-4 w-full hidden sm:flex   flex-wrap">
+                        {e.data.map((j) => <BaseAgent key={j.agentId} {...j} setAgent={setAgent} />)}
                         </div>
                     </div>)}
                 </div>

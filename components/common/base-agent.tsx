@@ -15,7 +15,7 @@ export default function BaseAgent({ agentText, info, imgSrc, setAgent, agentId }
 
     return (
         <>
-            <div className=" h-full flex flex-col  min-h-44 border-2 rounded-lg border-main-2">
+            <div className=" sm:w-[23%] w-full sm:h-auto h-full flex flex-col  min-h-44 border-2 rounded-lg border-main-2">
                 <div  className="flex bg-main-1 justify-between items-center rounded-tl-lg rounded-tr-lg  min-h-20 relative">
                     <div className="absolute w-full top-1/2  flex justify-center z-10">
                         <Image className="bg-white p-4 object-contain h-[5rem] w-[5rem] border-2 rounded-full border-main-1" src={imgSrc} alt="agent Icon" width={50} height={50} />
