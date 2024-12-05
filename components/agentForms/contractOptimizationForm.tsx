@@ -97,7 +97,7 @@ export default function ContractOptimizationForm({ imgSrc, agentInfo, agentText,
                                         ).join(' ')}</p>
                                     </div> */}
                                     <div className="flex flex-col gap-4">
-                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('')}}></div>
+                                        <Markdown>{e.raw}</Markdown>
                                     </div>
                                 </div>
                             </div>

@@ -88,18 +88,9 @@ export default function MarketingForm({ imgSrc, agentInfo, agentText, agent }: A
                         (
                             <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                                 <div className="flex flex-col gap-4">
-                                    {/* <div className="flex gap-4">
-                                        <p className="font-semibold">Agent:</p>
-                                        <p>{number == 0 ? "Competitor Data Retrieval" : number == 1 ? "Market Positioning" : number == 3 ? "Performance Matrix Analysis" : "Competitor Comparison"}</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <p className="font-semibold">Task Name:</p>
-                                        <p>{e.name.replaceAll('_', ' ').split(' ').map((word: any) =>
-                                            word.charAt(0).toUpperCase() + word.slice(1)
-                                        ).join(' ')}</p>
-                                    </div> */}
+                                    
                                     <div className="flex flex-col gap-4">
-                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('')}}></div>
+                                        <Markdown>{e.raw}</Markdown>
                                     </div>
                                 </div>
                             </div>

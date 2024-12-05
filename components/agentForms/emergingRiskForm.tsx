@@ -88,18 +88,9 @@ export default function EmergingRiskForm({ imgSrc, agentInfo, agentText, agent }
                         (
                             <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                                 <div className="flex flex-col gap-4">
-                                    {/* <div className="flex gap-4">
-                                        <p className="font-semibold">Agent:</p>
-                                        <p>{e.agent}</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <p className="font-semibold">Task Name:</p>
-                                        <p>{e.name.replaceAll('_', ' ').split(' ').map((word: any) =>
-                                            word.charAt(0).toUpperCase() + word.slice(1)
-                                        ).join(' ')}</p>
-                                    </div> */}
+                                    
                                     <div className="flex flex-col gap-4">
-                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','')}}></div>
+                                        <Markdown>{e.raw}</Markdown>
                                     </div>
                                 </div>
                             </div>

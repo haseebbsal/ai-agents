@@ -18,27 +18,27 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
         onSuccess(data) {
             console.log('data', data)
 
-            // const newData = data.data.result.tasks_output.map((e: any, number: number) => {
-            //     if (number == 1) {
+            const newData = data.data.result.tasks_output.map((e: any, number: number) => {
+                if (number == 1) {
 
-            //         const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')).split('\n')
-            //         const insights = e.raw.slice(e.raw.lastIndexOf('|') + 1)
-            //         const note = opo.slice(opo.length - 1)
-            //         const data = opo.slice(0, opo.length - 1)
-            //         const tableColumns = data[0].slice(1).split('|')
-            //         const tableData = data.slice(2, data.length - 1).map((f: any) => f.slice(1).split('|'))
+                    const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')).split('\n')
+                    const insights = e.raw.slice(e.raw.lastIndexOf('|') + 1)
+                    const note = opo.slice(opo.length - 1)
+                    const data = opo.slice(0, opo.length - 1)
+                    const tableColumns = data[0].slice(1).split('|')
+                    const tableData = data.slice(2, data.length - 1).map((f: any) => f.slice(1).split('|'))
 
-            //         return {
-            //             ...e,
-            //             tableData,
-            //             tableColumns,
-            //             note,
-            //             insights
-            //         }
-            //     }
-            //     return e
-            // })
-            setData(data.data.result.tasks_output)
+                    return {
+                        ...e,
+                        tableData,
+                        tableColumns,
+                        note,
+                        insights
+                    }
+                }
+                return e
+            })
+            setData(newData)
             return
 
         },
@@ -81,7 +81,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
         agentMutation.mutate(e)
     }
 
-    console.log(data?.[0].raw.replace('```html','').replaceAll('```','').split("\n"))
+
     return (
         <>
             <div className="flex flex-1 flex-wrap flex-col gap-4 w-full sm:p-0 p-4 ">
@@ -122,10 +122,8 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                                     word.charAt(0).toUpperCase() + word.slice(1)
                                                 ).join(' ')}</p>
                                             </div> */}
-                                            <div className="flex flex-col gap-2">
-                                                {/* <Markdown>{e.raw}</Markdown> */}
-                                                <div dangerouslySetInnerHTML={{ __html: e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('') }}></div>
-
+                                            <div className="flex flex-col gap-4">
+                                                <Markdown>{e.raw}</Markdown>
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +143,24 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                     </div> */}
                                     <div className="flex flex-col gap-2">
 
-                                        <div dangerouslySetInnerHTML={{ __html: e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('') }}></div>
+                                        <Table aria-label="Stats">
+                                            <TableHeader>
+                                                {e.tableColumns.map((f: string) => <TableColumn key={f}>{f}</TableColumn>)}
+                                            </TableHeader>
+                                            <TableBody>
+                                                {e.tableData.map((f: any, number: number) => {
+                                                    return (
+                                                        <TableRow key={number}>
+                                                            {f.map((p: any) => <TableCell key={p}>{p}</TableCell>)}
+                                                        </TableRow>
+                                                    )
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                                        <Markdown>
+                                            {e.insights}
+                                        </Markdown>
+                                        <Markdown>{e.note[0]}</Markdown>
                                     </div>
                                 </div>
                             </div>
