@@ -136,7 +136,7 @@ export default function PolicyForm({ imgSrc, agentInfo, agentText, agent }: Agen
                             </div>
                             <p className="text-text-1">{agentInfo}</p>
                             <div className="flex flex-col gap-4">
-                                <BaseFile accept=".pdf" headerText="Upload Policy Pdf" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                                <BaseFile accept=".pdf" headerText="Upload Policy PDF" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
                             </div>
                             <div className="flex justify-end gap-4">
                                 <BaseButton isDisabled={startChatMutation.isLoading} isLoading={startChatMutation.isLoading} type="submit" extraClass="min-w-40">Start Chat</BaseButton>
