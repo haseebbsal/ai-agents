@@ -8,7 +8,7 @@ import { ReactNode, useContext } from "react";
 const instructions = [
     [
         `Enter the website URL or product/service keywords for which you want to optimize SEO.`,
-        `Click the Analyze button to start the SEO analysis.`,
+        `Click the Go button to start the SEO analysis.`,
         `The agent will analyze relevant keywords, SEO trends, and popular search terms in the insurance industry.`,
         `View the company's competitive SEO standing and comparisons with other companies for the same keywords.`,
         `Get actionable recommendations for keyword usage and SEO improvements tailored to your website or campaign goals.`,
