@@ -115,7 +115,7 @@ export default function AutomatedBudgetForm({ imgSrc, agentInfo, agentText, agen
                                                 <TableBody>
                                                     {e.tableData.map((f: any, number: number) => {
                                                         return (
-                                                            <TableRow key={number}>
+                                                             <TableRow key={number}>
                                                                 {f.map((p: any, number: number) => <TableCell key={`${p + number}`}>{p}</TableCell>)}
                                                             </TableRow>
                                                         )
