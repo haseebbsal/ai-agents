@@ -26,7 +26,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                     const note = opo.slice(opo.length - 1)
                     const data = opo.slice(0, opo.length - 1)
                     const tableColumns = data[0].slice(1).split('|')
-                    const tableData = data.slice(2, data.length - 1).map((f: any) => f.slice(1).split('|'))
+                    const tableData = data.slice(2).map((f: any) => f.slice(1).split('|'))
 
                     return {
                         ...e,
