@@ -21,7 +21,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
             const newData = data.data.result.tasks_output.map((e: any, number: number) => {
                 if (number == 1 && e.raw.includes('|')) {
 
-                    const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')).split('\n')
+                    const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')+1).split('\n')
                     const insights = e.raw.slice(e.raw.lastIndexOf('|') + 1)
                     // const note = opo.slice(opo.length - 1)
                     const data = opo.slice(0)
@@ -81,6 +81,8 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
         agentMutation.mutate(e)
     }
 
+
+    console.log('checkkk',data)
 
     return (
         <>
