@@ -23,7 +23,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
 
                     const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')).split('\n')
                     const insights = e.raw.slice(e.raw.lastIndexOf('|') + 1)
-                    const note = opo.slice(opo.length - 1)
+                    // const note = opo.slice(opo.length - 1)
                     const data = opo.slice(0)
                     const tableColumns = data[0].slice(1).split('|')
                     const tableData = data.slice(2).map((f: any) => f.slice(1).split('|'))
@@ -32,7 +32,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                         ...e,
                         tableData,
                         tableColumns,
-                        note,
+                        // note,
                         insights
                     }
                 }
@@ -160,7 +160,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                         <Markdown>
                                             {e.insights}
                                         </Markdown>
-                                        <Markdown>{e.note[0]}</Markdown>
+                                        {/* <Markdown>{e.note[0]}</Markdown> */}
                                     </div>
                                 </div>
                             </div>
