@@ -38,7 +38,7 @@ const agents = [
         imgSrc: "/agents/customer.svg", agentText: "Consumer Digital Twin", info: "Compares products and marketing ideas against insurance customer personas."
     },
     {
-        imgSrc: "/agents/vehicle.svg", agentText: "Id Reader", info: "Returns the value of an uploaded ID document."
+        imgSrc: "/agents/vehicle.svg", agentText: "ID Reader", info: "Returns the value of an uploaded ID document."
     },
     {
         imgSrc: "/agents/policy.svg", agentText: "Policy Word Explainer", info: "Explains covers and exclusions in a simple to understand manner."

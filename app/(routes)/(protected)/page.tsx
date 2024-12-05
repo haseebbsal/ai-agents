@@ -26,7 +26,7 @@ const agentsData = [
         imgSrc: "/agents/customer.svg", agentText: "Consumer Digital Twin", info: "Compares products and marketing ideas against insurance customer personas.", agentId: '3'
       },
       {
-        imgSrc: "/agents/vehicle.svg", agentText: "Id Reader", info: "Returns the value of an uploaded ID document.", agentId: '4'
+        imgSrc: "/agents/vehicle.svg", agentText: "ID Reader", info: "Returns the value of an uploaded ID document.", agentId: '4'
       },
       {
         imgSrc: "/agents/consumer.svg", agentText: "Person Research", info: "Automates the gathering of relevant data from various sources, like public records and social media, to ensure comprehensive risk assessment.", agentId: '8'

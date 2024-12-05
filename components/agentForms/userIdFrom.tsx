@@ -160,7 +160,7 @@ export default function UserIdForm({ imgSrc, agentInfo, agentText, agent }: Agen
                         </div>
                         <p className="text-text-1">{agentInfo}</p>
                         <div className="flex flex-col gap-4">
-                            <BaseFile accept=".jpeg,.jpg,.png" headerText="Upload User Id Picture" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                            <BaseFile accept=".jpeg,.jpg,.png" headerText="Upload User ID Picture" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
                         </div>
                         <div className="flex justify-end gap-4">
                             <BaseButton isDisabled={agentFileMutation.isLoading} isLoading={agentFileMutation.isLoading} type="submit" extraClass="min-w-40">Go</BaseButton>
