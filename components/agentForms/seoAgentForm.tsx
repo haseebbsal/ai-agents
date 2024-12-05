@@ -19,7 +19,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
             console.log('data', data)
 
             const newData = data.data.result.tasks_output.map((e: any, number: number) => {
-                if (number == 1) {
+                if (number == 1 && e.raw.includes('|')) {
 
                     const opo = e.raw.slice(e.raw.indexOf('|'), e.raw.lastIndexOf('|')).split('\n')
                     const insights = e.raw.slice(e.raw.lastIndexOf('|') + 1)
