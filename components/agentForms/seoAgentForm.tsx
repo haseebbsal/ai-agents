@@ -81,7 +81,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
         agentMutation.mutate(e)
     }
 
-
+    console.log(data?.[0].raw.replace('```html','').replaceAll('```','').split("\n"))
     return (
         <>
             <div className="flex flex-1 flex-wrap flex-col gap-4 w-full sm:p-0 p-4 ">
@@ -124,7 +124,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                             </div> */}
                                             <div className="flex flex-col gap-2">
                                                 {/* <Markdown>{e.raw}</Markdown> */}
-                                                <div dangerouslySetInnerHTML={{ __html: e.raw.replace('```html','').replaceAll('```','') }}></div>
+                                                <div dangerouslySetInnerHTML={{ __html: e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('') }}></div>
 
                                             </div>
                                         </div>
@@ -145,7 +145,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                                     </div> */}
                                     <div className="flex flex-col gap-2">
 
-                                        <div dangerouslySetInnerHTML={{ __html: e.raw.replace('```html','').replaceAll('```','') }}></div>
+                                        <div dangerouslySetInnerHTML={{ __html: e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('') }}></div>
                                     </div>
                                 </div>
                             </div>

@@ -65,8 +65,8 @@ export default function ContractSummarizerForm({ imgSrc, agentInfo, agentText, a
                                             word.charAt(0).toUpperCase() + word.slice(1)
                                         ).join(' ')}</p>
                                     </div> */}
-                                    <div className="flex flex-col gap-4">
-                                        <Markdown>{e.raw}</Markdown>
+                                   <div className="flex flex-col gap-4">
+                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('')}}></div>
                                     </div>
                                 </div>
                             </div>

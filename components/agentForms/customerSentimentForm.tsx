@@ -99,7 +99,7 @@ export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, ag
                                         ).join(' ')}</p>
                                     </div> */}
                                     <div className="flex flex-col gap-4">
-                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','')}}></div>
+                                        <div dangerouslySetInnerHTML={{__html:e.raw.replace('```html','').replaceAll('```','').split("\n").filter((j:any)=>!!j.trim() && !j.toLowerCase().includes('html')).join('')}}></div>
                                     </div>
                                 </div>
                             </div>
