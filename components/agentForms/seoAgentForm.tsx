@@ -145,7 +145,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
 
                                         <Table aria-label="Stats">
                                             <TableHeader>
-                                                {e.tableColumns.map((f: string) => <TableColumn key={f}>{f}</TableColumn>)}
+                                                {e.tableColumns.map((f: string) => <TableColumn key={f}><Markdown>{f}</Markdown></TableColumn>)}
                                             </TableHeader>
                                             <TableBody>
                                                 {e.tableData.map((f: any, number: number) => {
