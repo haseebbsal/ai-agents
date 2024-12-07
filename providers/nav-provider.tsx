@@ -5,7 +5,12 @@ import HomeNavbar from "@/components/common/home-navbar"
 import BaseAutoComplete from "@/components/form/base-autocomplete"
 import BaseInput from "@/components/form/base-input"
 import { createContext, ReactNode, useState } from "react"
+import {Inter} from 'next/font/google'
 
+const inter=Inter({
+    weight:'400',
+    subsets:['latin']
+})
 export const navContext = createContext<any>({})
 export default function NavProvider({ children }: { children: ReactNode }) {
     const [showSideBar, setShowSideBar] = useState<boolean>(true)
@@ -15,7 +20,7 @@ export default function NavProvider({ children }: { children: ReactNode }) {
         <>
         {/* ded */}
             <navContext.Provider value={{ showSideBar, setShowSideBar,agent,setAgent,setShowInstructions,showInstructions}}>
-                <div className="min-h-[100vh] flex-col flex">
+                <div className={`min-h-[100vh] flex-col flex ${inter.className}`}>
                     <HomeNavbar />
                     <div className="flex flex-1 gap-4 ">
                         {/* {showSideBar && <div className={`bg-backgroundColors-1 flex-[0.3_1_0] p-4 flex-col gap-4 flex border-r-1 border-main-2`}>
