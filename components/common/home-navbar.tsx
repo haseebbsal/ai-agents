@@ -12,7 +12,7 @@ export default function HomeNavbar(){
     const logoutMutation=useMutation(()=> axiosInstance.post('/logout'))
     return(
         <>
-        <nav className="flex sm:justify-between justify-center sm:gap-0 gap-4 p-4  flex-wrap items-center border-main-2 bg-backgroundColors-1">
+        <nav className="flex sm:justify-between justify-center sm:gap-0 gap-4 p-4  flex-wrap items-center border-main-2 ">
             <Link href={'/'}><Image src={'/common/logo.svg'} alt="home logo" className="w-[200px] h-[60px] object-contain" width={200} height={200}/></Link>
             
             {!Cookies.get('accessToken') && <div className="flex gap-4">
