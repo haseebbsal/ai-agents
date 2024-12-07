@@ -122,7 +122,7 @@ export default function Home() {
   const { showSideBar, setShowSideBar, setAgent } = useContext(navContext)
   return (
     <>
-      <div className=" flex-1 flex flex-col gap-4 p-4 w-full">
+      <div className=" flex-1 flex flex-col gap-4  w-full" >
         <div className="flex justify-between items-center w-full">
           <div className="flex gap-4 items-center font-semibold w-full">
             {/* <GiHamburgerMenu className="cursor-pointer" onClick={() => setShowSideBar(!showSideBar)} /> */}
@@ -136,16 +136,16 @@ export default function Home() {
         </div>
         <div className="flex gap-4 w-full flex-col flex-wrap items-center sm:w-1/2 mx-auto">
           {/* <BaseAgent agentId='7' setAgent={setAgent} imgSrc="/agents/vehicle.svg" agentText="Vehicle Data Agent" info="Find vehicle information based on VIN/Chassis input or manual selection and returns a comprehensive report based on specifications and internet search." /> */}
-          <p className="text-2xl font-semibold text-center">Welcome to Insurance Agents</p>
+          <p className="text-4xl font-semibold text-center text-main-1">Welcome to Insurance Agents</p>
           <p className="text-center">These agents have been built exclusively to help insurance professionals understand how to engage with artificial intelligence and AI agents. They are free to use and do not require any connectivity to any systems. Go ahead and enjoy using the AI agents. If you want us to build other agents or provide feedback, your input is very welcome. Please send your feedback to <span className="text-main-1">feedback@insurancebots.ai.</span></p>
           {/* <Link href={'/agents'} className="bg-main-1 text-white min-w-28 flex items-center justify-center rounded-lg  !h-[3rem] p-4">Check Out Our Agents</Link> */}
         </div>
-        <div className=" flex-1 flex flex-col gap-4 w-full p-4">
+        <div className=" flex-1 flex flex-col gap-4 w-full ">
           <div className="flex justify-center gap-4 flex-wrap items-center">
             {agentsData.map((e,number) => <Link key={`${e.categorization} ${number}`} className="p-4 rounded-lg min-w-28 sm:w-auto w-full flex justify-center bg-main-1 text-white" href={`#${e.categorization}`}>{e.categorization}</Link>)}
 
           </div>
-          <div className="flex gap-4 w-full flex-col flex-wrap">
+          <div className="flex gap-4 w-full flex-col  flex-wrap bg-white">
             {agentsData.map((e, index: number) => <div key={index} id={e.categorization} className={`flex flex-col  w-full !text-text-2 gap-4  p-4 rounded-lg`}>
               <h1 className="font-semibold text-2xl  text-center">{e.categorization}</h1>
               <div className=" gap-4 w-full flex sm:!hidden   flex-wrap">
