@@ -107,7 +107,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                         </div>
                     </form>
                 </div>
-                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1">
+                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col w-full gap-10 ">
                     {
                         data?.map((e: any, number: number) => {
                             if (number != 1) {

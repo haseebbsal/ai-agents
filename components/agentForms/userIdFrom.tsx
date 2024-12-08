@@ -172,7 +172,7 @@ export default function UserIdForm({ imgSrc, agentInfo, agentText, agent }: Agen
                 {/* <Markdown >
                     {penis}
                 </Markdown> */}
-                {agentFileMutation.data?.data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex-1">
+                {agentFileMutation.data?.data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex-1 w-full">
 
                     {
                         <Markdown>{agentFileMutation.data.data.result.raw}</Markdown>

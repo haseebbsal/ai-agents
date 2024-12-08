@@ -105,7 +105,7 @@ export default function VirtualAssistantForm({ imgSrc, agentInfo, agentText, age
                             </div>
                             <p className="text-text-1">{agentInfo}</p>
                             <div className="flex flex-col gap-4">
-                                <BaseFile multiple={true} accept=".pdf" headerText="Upload One Or More Pdfs" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                                <BaseFile multiple={true} accept=".pdf,.docx,.txt" headerText="Upload One Or More Pdfs" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
                             </div>
                             <div className="flex justify-end gap-4">
                                 <BaseButton isDisabled={startChatMutation.isLoading} isLoading={startChatMutation.isLoading} type="submit" extraClass="min-w-40">Start Chat</BaseButton>

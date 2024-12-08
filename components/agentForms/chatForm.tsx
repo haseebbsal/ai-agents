@@ -138,7 +138,7 @@ export default function ChatForm({ imgSrc, agentInfo, agentText, agent }: AgentF
                             </div>
                             <p className="text-text-1">{agentInfo}</p>
                             <div className="flex flex-col gap-4">
-                                <BaseFile accept=".pdf" headerText="Upload Pdf" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
+                                <BaseFile accept=".pdf,.docx,.txt" headerText="Upload Pdf" showHeader={true} control={control} name="agent" rules={{ required: "Select File" }} />
                             </div>
                             <div className="flex justify-end gap-4">
                                 <BaseButton isDisabled={startChatMutation.isLoading} isLoading={startChatMutation.isLoading} type="submit" extraClass="min-w-40">Start Chat</BaseButton>

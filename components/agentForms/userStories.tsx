@@ -160,7 +160,7 @@ export default function UserStoriesForm({ imgSrc, agentInfo, agentText, agent }:
                     </div>
                 </div>
 
-                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1">
+                {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1 w-full">
                     {
                         data?.map((e: any, number: number) => {
                             return (
