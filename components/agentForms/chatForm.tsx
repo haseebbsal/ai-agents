@@ -24,7 +24,7 @@ export default function ChatForm({ imgSrc, agentInfo, agentText, agent }: AgentF
     const [chatList, setChatList] = useState<any>([])
 
     const deleteFileMutation = useMutation((data: any) => axiosInstance.delete(`/file?file=${data}`))
-    const startChatMutation = useMutation((data: any) => axiosInstance.postForm(`/start/chatbot`, data), {
+    const startChatMutation = useMutation((data: any) => axiosInstance.postForm(`/start/policy-chat`, data), {
         onSuccess(data, variables, context) {
             console.log('file', data.data)
             setChatFile(data.data.result)
@@ -32,7 +32,7 @@ export default function ChatForm({ imgSrc, agentInfo, agentText, agent }: AgentF
         },
     })
 
-    const sendChatMutation = useMutation((data: any) => axiosInstance.post('/chatbot/chat', data), {
+    const sendChatMutation = useMutation((data: any) => axiosInstance.post('/policy-chat/chat', data), {
         onSuccess(data, variables, context) {
             console.log('chat success', data.data)
             console.log('chatlist', chatList)
