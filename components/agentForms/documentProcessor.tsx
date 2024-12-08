@@ -50,7 +50,7 @@ export default function DocumentProcessorForm({ imgSrc, agentInfo, agentText, ag
                 </div>
                 {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col gap-10 flex-1 w-full">
                     {
-                        data?.map((e: any, number: number) =>
+                        data.slice(1)?.map((e: any, number: number) =>
                         (
                             <div key={number} className="flex flex-col shadow-lg p-4 rounded-lg gap-4">
                                 <div className="flex flex-col gap-4">
