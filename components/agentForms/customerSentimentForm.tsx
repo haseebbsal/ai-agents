@@ -98,6 +98,8 @@ export default function CustomerSentimentForm({ imgSrc, agentInfo, agentText, ag
                                             word.charAt(0).toUpperCase() + word.slice(1)
                                         ).join(' ')}</p>
                                     </div> */}
+
+                                    {/* gr */}
                                     <div className="flex flex-col gap-4">
                                         <Markdown>{e.raw}</Markdown>
                                     </div>
