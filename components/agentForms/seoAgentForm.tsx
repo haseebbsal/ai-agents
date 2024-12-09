@@ -10,7 +10,63 @@ import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 
 import { AgentFormInteface } from "@/utils/types"
 import Instructions from "../common/instructions"
 
+const content=`Results:
+# Persona-Specific Feedback
 
+### Jordan Miller
+- *Reaction*: Interested due to alignment with a tech-savvy, career-driven lifestyle. Seeks digital integration with personalized workout plans and progress tracking.
+- *Price Sensitivity*: Budget-conscious; prefers competitively priced subscription models with optional premiums.
+- *Marketing Concept*: Use digital platforms; emphasize flexibility, home workouts, and local cultural elements. Partner with influencers.
+- *Specific Example*: Solves maintaining active lifestyle without compromising work.
+- *Actionable Suggestions*: Offer trial periods, leverage social media engagement, utilize targeted ads.
+
+### Emily and Michael Thompson
+- *Reaction*: Sees the value in maintaining a healthy lifestyle. Prefers affordable and convenient fitness solutions adaptable to family life.
+- *Price Sensitivity*: Budget-focused; seeks affordable options.
+- *Marketing Concept*: Emphasize family-friendly routines, home-based solutions, and busy lifestyle compatibility.
+- *Specific Example*: Integrates family workouts to improve health and bonding.
+- *Actionable Suggestions*: Provide free trials, use local language, partner with healthcare professionals for credibility.
+
+### Linda and Robert Johnson
+- *Reaction*: Favorable; aligns with maintaining mobility and health in retirement. Prefers straightforward guidance.
+- *Price Sensitivity*: Seeks affordable, value-packed options.
+- *Marketing Concept*: Highlight simplicity and adaptability; use testimonials from similar demographics.
+- *Specific Example*: Addresses physical inactivity while avoiding gym commutes.
+- *Actionable Suggestions*: Provide senior-friendly content with healthcare advice and multilingual support.
+
+### Sarah Martinez
+- *Reaction*: Welcomes home-based, structured fitness that fits a creative lifestyle.
+- *Price Sensitivity*: Budget-conscious; prefers competitive pricing.
+- *Marketing Concept*: Emphasize time-efficiency, home-based workouts, and adaptability.
+- *Specific Example*: Maintains fitness amidst freelance work-from-home setup.
+- *Actionable Suggestions*: Highlight privacy commitment, integrate cultural elements in marketing.
+
+### Alex and Taylor Morgan
+- *Reaction*: Positive; aligns with newlyweds’ busy and budget-conscious lifestyle.
+- *Price Sensitivity*: Price-conscious; prefers moderate pricing with occasional discounts.
+- *Marketing Concept*: Focus on convenience and inclusivity; consider family planning needs.
+- *Specific Example*: Provides structured health routines for busy schedules.
+- *Actionable Suggestions*: Bilingual support, localized content, community-based engagement.
+
+### Mia Chen
+- *Reaction*: Fits well with tech-savvy, young professional lifestyle.
+- *Price Sensitivity*: Cost-sensitive; values affordability with perceived benefits.
+- *Marketing Concept*: Leverage social media and influencers; emphasize digital-first approach.
+- *Specific Example*: Solves scheduling conflicts with accessible quick workouts.
+- *Actionable Suggestions*: Use mobile-first strategies, bilingual communication, and emphasize digital security.
+
+### Daniel Nguyen
+- *Reaction*: Positive; complements a young professional's life with manageable short-term fitness commitments.
+- *Price Sensitivity*: Seeks competitively priced solutions.
+- *Marketing Concept*: Highlight flexibility and remote accessibility.
+- *Specific Example*: Offers continuity across travel-heavy schedule.
+- *Actionable Suggestions*: Integrate gaming elements, localized payment solutions, and young professional testimonials.
+
+### Alex Rodriguez
+- *Reaction*: Suitable for a high-income, frequent travel lifestyle; values flexibility.
+- *Price Sensitivity*: Perceived value is key; premium features justified.
+- *Marketing Concept*: Use travel and business platforms; emphasize time efficiency, location adaptability.
+- *Specific Example*: Main`
 export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: AgentFormInteface) {
     const { control, handleSubmit, reset, getValues } = useForm()
     const [data, setData] = useState<any>()
@@ -107,6 +163,7 @@ export default function SeoAgentForm({ imgSrc, agentInfo, agentText, agent }: Ag
                         </div>
                     </form>
                 </div>
+               
                 {data && <div className=" p-4 border-2 rounded-lg sm:ml-4 sm:mr-4 flex flex-col w-full gap-10 ">
                     {
                         data?.map((e: any, number: number) => {
