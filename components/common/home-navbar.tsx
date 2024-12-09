@@ -13,7 +13,7 @@ export default function HomeNavbar(){
     return(
         <>
         <nav className="flex sm:justify-between justify-center sm:gap-0 gap-4 p-4  flex-wrap items-center border-main-2 ">
-            <Link href={'/'}><Image src={'/common/logo.svg'} alt="home logo" className="w-[200px] h-[60px] object-contain" width={200} height={200}/></Link>
+            <Link href={'/'}><Image src={'/common/logo.png'} alt="home logo" className="w-[200px] h-[60px] object-contain" width={200} height={200}/></Link>
             
             {!Cookies.get('accessToken') && <div className="flex gap-4">
                 <Link className="bg-main-1 text-white min-w-28 flex items-center justify-center rounded-lg  !h-[3rem]" href={'/login'}>Sign In</Link>
