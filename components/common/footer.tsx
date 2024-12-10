@@ -5,7 +5,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 export default function Footer() {
     return (
         <>
-            <div className="w-full bg-white pt-4">
+            <div className="w-full pt-4">
                 <div className="w-full justify-center flex items-center flex-col gap-4 bg-main-1 text-white sm:px-4 sm:py-4 pt-16 pb-8  min-h-[20rem] border-t-1 border-main-2">
                     <div className=" w-full mt-auto flex sm:flex-nowrap flex-wrap justify-center sm:gap-28 gap-8 items-center">
                         <div className="flex flex-col  gap-4">
