@@ -1,5 +1,3 @@
-import { SlOptions } from "react-icons/sl";
-import { VscAccount } from "react-icons/vsc";
 import BaseButton from "./base-button";
 import Image from "next/image";
 import { BaseAgentProps } from "@/utils/types";
@@ -9,8 +7,8 @@ import { useRouter } from "next/navigation";
 export default function BaseAgent({ agentText, info, imgSrc, setAgent, agentId }: BaseAgentProps) {
     const router = useRouter()
     const navigate = () => {
-        setAgent(agentId)
-        router.push('/agent')
+        // setAgent(agentId)
+        router.push(`/agent?agent=${agentId}`)
     }
 
     return (

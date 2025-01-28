@@ -1,7 +1,7 @@
 'use client'
 import { navContext } from "@/providers/nav-provider";
 import { redirect } from "next/navigation";
-import { useContext } from "react";
+import { use, useContext } from "react";
 import SeoAgentForm from "@/components/agentForms/seoAgentForm";
 import MarketingForm from "@/components/agentForms/marketingForm";
 import DigitalTwinForm from "@/components/agentForms/digitalTwinForm";
@@ -88,12 +88,15 @@ const agents = [
     }
 ]
 
-export default function Home() {
-    const { showSideBar, setShowSideBar, agent } = useContext(navContext)
-    console.log('agent', agent)
-    if (!agent) {
+const agentIds=['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19']
+
+export default function Home({searchParams}:{searchParams:any}) {
+    // const { agent } = useContext(navContext)
+    const {agent}:any=use(searchParams)
+    if (!agentIds.includes(agent)) {
         redirect('/')
     }
+
     return (
         <>
             <div className="w-full bg-white flex">
